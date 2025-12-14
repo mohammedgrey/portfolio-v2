@@ -2,6 +2,7 @@
 
 import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,23 +13,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { WhenHydrated } from "@/components/wrappers/WhenHydrated";
 
-export function ThemeToggle() {
+export function ThemeSwitcher() {
   const { setTheme, theme } = useTheme();
+  const t = useTranslations("ThemeSwitcher");
 
   const themes = [
     {
       value: "system",
-      label: "System",
+      label: t("system"),
       icon: Monitor,
     },
     {
       value: "light",
-      label: "Light",
+      label: t("light"),
       icon: Sun,
     },
     {
       value: "dark",
-      label: "Dark",
+      label: t("dark"),
       icon: Moon,
     },
   ];
