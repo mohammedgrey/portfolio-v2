@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently --prefix-colors \"#ad7fa7,#4f8ed3,#0fbc7a\" --names \"NEXT,TS,LINT\" --kill-others-on-fail \"next dev --turbo\" \"tsc --noEmit --watch --preserveWatchOutput --pretty\" \"chokidar 'src/**/*.{ts,tsx}' -c 'eslint src'\"",
+    "dev:only": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:watch": "chokidar 'src/**/*.{ts,tsx}' -c 'eslint src'",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -28,6 +32,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
     "tailwindcss": "^4",
