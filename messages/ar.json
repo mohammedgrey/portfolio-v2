@@ -4,7 +4,10 @@
     "description": "تبحث عن نقطة بداية أو مزيد من التعليمات؟ توجه إلى <templatesLink>القوالب</templatesLink> أو مركز <learningLink>التعلم</learningLink>.",
     "templatesLink": "القوالب",
     "learningLink": "التعلم",
-    "button": "زر"
+    "button": "زر",
+    "nested": {
+      "text": "هذا نص متداخل"
+    }
   },
   "ThemeSwitcher": {
     "system": "النظام",

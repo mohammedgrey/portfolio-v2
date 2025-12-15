@@ -1,8 +1,9 @@
-import { ThemeSwitcher } from "@/components/system/ThemeSwitcher";
 import { LanguageSwitcher } from "@/components/system/LanguageSwitcher";
+import { ThemeSwitcher } from "@/components/system/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
+import { getAppTranslations } from "@/i18n";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import { setRequestLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -14,7 +15,7 @@ export default async function HomePage({ params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  const t = await getTranslations("HomePage");
+  const t = await getAppTranslations("HomePage");
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -34,7 +35,7 @@ export default async function HomePage({ params }: Props) {
           height={20}
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-start">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             {t("title")}
           </h1>

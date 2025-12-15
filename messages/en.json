@@ -4,7 +4,10 @@
     "description": "Looking for a starting point or more instructions? Head over to <templatesLink>Templates</templatesLink> or the <learningLink>Learning</learningLink> center.",
     "templatesLink": "Templates",
     "learningLink": "Learning",
-    "button": "Button"
+    "button": "Button",
+    "nested": {
+      "text": "This is nested text"
+    }
   },
   "ThemeSwitcher": {
     "system": "System",

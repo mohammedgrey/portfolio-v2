@@ -1,7 +1,7 @@
-import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
 import LocaleProvider from "@/components/wrappers/LocaleProvider";
+import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
+import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,7 +31,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const t = await getAppTranslations({ locale, namespace: "Metadata" });
 
   return {
     title: t("title"),
