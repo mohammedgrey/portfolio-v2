@@ -5,8 +5,16 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   typescript: {
-    // Enable type checking during development and build
     ignoreBuildErrors: false,
+  },
+  turbopack: {
+    rules: {
+      // Make *.svg importable as React components
+      "*.svg": {
+        loaders: [{ loader: "@svgr/webpack", options: { svgo: true } }],
+        as: "*.js",
+      },
+    },
   },
 };
 
