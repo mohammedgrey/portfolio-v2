@@ -1,0 +1,30 @@
+{
+  "Custom Hook": {
+    "prefix": "ch",
+    "body": [
+      "export type ${TM_FILENAME_BASE/(^\\w*)|(-)/${1:/pascalcase}${2:+ }/g}Input = {};",
+      "const ${TM_FILENAME_BASE/(\\w+)\\..+/$1/} = () => {",
+      "  return {};",
+      "};",
+      "export default ${TM_FILENAME_BASE/(\\w+)\\..+/$1/};",
+      "",
+      "export type ${TM_FILENAME_BASE/(^\\w*)|(-)/${1:/pascalcase}${2:+ }/g}Return = ReturnType<typeof ${TM_FILENAME_BASE/(\\w+)\\..+/$1/}>;"
+    ],
+    "description": "Create custom hook with typescript"
+  },
+
+  "React Typescript Component": {
+    "prefix": "trfc",
+    "body": [
+      "import React, { type FC } from 'react'",
+      "",
+      "export type ${TM_FILENAME_BASE/(\\w+)\\..+/$1/}Props = Readonly<{}>",
+      "const ${TM_FILENAME_BASE/(\\w+)\\..+/$1/}: FC<${TM_FILENAME_BASE/(\\w+)\\..+/$1/}Props> = () => {",
+      "  return null",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE/(\\w+)\\..+/$1/}"
+    ],
+    "description": "Create a react component with typescript"
+  }
+}
