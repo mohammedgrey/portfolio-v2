@@ -9,6 +9,13 @@
       "text": "This is nested text"
     }
   },
+  "PrimaryColorSwitcher": {
+    "blue": "Blue",
+    "green": "Green",
+    "purple": "Purple",
+    "orange": "Orange",
+    "red": "Red"
+  },
   "ThemeSwitcher": {
     "system": "System",
     "light": "Light",

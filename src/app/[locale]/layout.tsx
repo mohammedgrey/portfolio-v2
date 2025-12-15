@@ -1,4 +1,5 @@
 import LocaleProvider from "@/components/wrappers/LocaleProvider";
+import { PrimaryColorProvider } from "@/components/wrappers/PrimaryColorProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
@@ -58,7 +59,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <PrimaryColorProvider>{children}</PrimaryColorProvider>
           </ThemeProvider>
         </LocaleProvider>
       </body>

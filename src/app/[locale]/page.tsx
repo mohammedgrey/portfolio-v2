@@ -1,4 +1,5 @@
 import { LanguageSwitcher } from "@/components/system/LanguageSwitcher";
+import { PrimaryColorSwitcher } from "@/components/system/PrimaryColorSwitcher";
 import { ThemeSwitcher } from "@/components/system/ThemeSwitcher";
 import { Button } from "@/components/ui/button";
 import { getAppTranslations } from "@/i18n";
@@ -23,6 +24,7 @@ export default async function HomePage({ params }: Props) {
         <div className="flex w-full justify-between items-center">
           <div></div>
           <div className="flex gap-2">
+            <PrimaryColorSwitcher />
             <LanguageSwitcher />
             <ThemeSwitcher />
           </div>

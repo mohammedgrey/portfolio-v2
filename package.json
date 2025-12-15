@@ -17,16 +17,15 @@
     "lint:run": "eslint src",
     "lint:watch": "chokidar 'src/**/*.{ts,tsx}' -c 'npm run lint:run'",
     "type-check": "tsc --noEmit",
+    "type-check:lint-staged": "bash -c 'tsc --noEmit'",
     "type-check:watch": "tsc --noEmit --watch --preserveWatchOutput --pretty",
     "update-icons": "node scripts/update-icons.js",
     "icons:watch": "chokidar \"src/assets/icons/**/*\" -c \"npm run update-icons\"",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "tsc --noEmit"
-    ]
+    "src/**/*.{ts,tsx}": "eslint --fix",
+    "{src,}/**/*.{ts,tsx}": "npm run type-check:lint-staged"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",

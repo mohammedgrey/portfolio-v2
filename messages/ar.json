@@ -9,6 +9,13 @@
       "text": "هذا نص متداخل"
     }
   },
+  "PrimaryColorSwitcher": {
+    "blue": "أزرق",
+    "green": "أخضر",
+    "purple": "بنفسجي",
+    "orange": "برتقالي",
+    "red": "أحمر"
+  },
   "ThemeSwitcher": {
     "system": "النظام",
     "light": "فاتح",
