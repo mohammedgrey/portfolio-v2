@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run dev:concurrent",
-    "dev:concurrent": "concurrently \"npm run dev:next\" \"npm run dev:type-check\" \"npm run dev:lint\" \"npm run dev:icons\" --prefix-colors \"#ad7fa7,#4f8ed3,#0fbc7a,#28b8db\" --names \"NEXT,TS,LINT,ICONS\" --kill-others",
+    "dev:concurrent": "concurrently \"npm run dev:next\" \"npm run dev:type-check\" \"npm run dev:lint\" \"npm run dev:icons\" --prefix-colors \",#3279c6,#4c32c3,#28b8db\" --names \"NEXT,TS,LINT,ICONS\" --kill-others",
     "dev:next": "next dev --turbo",
     "dev:type-check": "npm run type-check:watch",
     "dev:lint": "npm run lint:watch",
