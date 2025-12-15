@@ -2,15 +2,24 @@
   "name": "next-js-template",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "concurrently --prefix-colors \"#ad7fa7,#4f8ed3,#0fbc7a\" --names \"NEXT,TS,LINT\" --kill-others-on-fail \"next dev --turbo\" \"tsc --noEmit --watch --preserveWatchOutput --pretty\" \"chokidar 'src/**/*.{ts,tsx}' -c 'eslint src'\"",
+    "dev": "npm run dev:concurrent",
+    "dev:concurrent": "concurrently \"npm run dev:next\" \"npm run dev:type-check\" \"npm run dev:lint\" \"npm run dev:icons\" --prefix-colors \"#ad7fa7,#4f8ed3,#0fbc7a,#28b8db\" --names \"NEXT,TS,LINT,ICONS\" --kill-others",
+    "dev:next": "next dev --turbo",
+    "dev:type-check": "npm run type-check:watch",
+    "dev:lint": "npm run lint:watch",
+    "dev:icons": "npm run update-icons && npm run icons:watch",
     "dev:only": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lint:watch": "chokidar 'src/**/*.{ts,tsx}' -c 'eslint src'",
+    "lint:run": "eslint src",
+    "lint:watch": "chokidar 'src/**/*.{ts,tsx}' -c 'npm run lint:run'",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "tsc --noEmit --watch"
+    "type-check:watch": "tsc --noEmit --watch --preserveWatchOutput --pretty",
+    "update-icons": "node scripts/update-icons.js",
+    "icons:watch": "chokidar \"src/assets/icons/**/*\" -c \"npm run update-icons\""
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
