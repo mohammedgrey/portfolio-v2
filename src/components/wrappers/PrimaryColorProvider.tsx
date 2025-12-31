@@ -5,6 +5,11 @@ import { useLocalStorage } from "usehooks-ts";
 
 const primaryColors = [
   {
+    name: "grey",
+    value: "oklch(0.3846 0.0173 258.37)",
+    class: "bg-[oklch(0.3846_0.0173_258.37)]",
+  },
+  {
     name: "blue",
     value: "oklch(0.8 0.15 230)",
     class: "bg-[oklch(0.8_0.15_230)]",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useIsHydrated } from "@/hooks/useIsHydrated";
+import { useIsHydrated } from "@/hooks/common/useIsHydrated";
 import { ReactNode } from "react";
 
 interface WhenHydratedProps {
