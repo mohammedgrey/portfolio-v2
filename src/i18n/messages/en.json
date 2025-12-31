@@ -1,0 +1,58 @@
+{
+  "Common": {
+    "OK": "OK",
+    "close": "Close",
+    "confirm": "Confirm",
+    "copy": "Copy",
+    "copiedToClipboard": "Copied to clipboard",
+    "noDataFound": "No data found",
+    "noDataFoundDescription": "There is no data to display here at the moment."
+  },
+  "HomePage": {
+    "title": "To get started, edit the page.tsx file.",
+    "description": "Looking for a starting point or more instructions? Head over to <templatesLink>Templates</templatesLink> or the <learningLink>Learning</learningLink> center.",
+    "templatesLink": "Templates",
+    "learningLink": "Learning",
+    "button": "Button",
+    "nested": {
+      "text": "This is nested text"
+    },
+    "hero": {
+      "title": "Welcome to Next.js!",
+      "description": "Get started by editing",
+      "inputPlaceholder": "What do you want to know?"
+    },
+    "generate": {
+      "title": "Generate Section",
+      "description": "This is the generate section description.",
+      "action": "Generate & Download"
+    }
+  },
+  "PrimaryColorSwitcher": {
+    "grey": "Grey",
+    "blue": "Blue",
+    "green": "Green",
+    "purple": "Purple",
+    "orange": "Orange",
+    "red": "Red"
+  },
+  "ThemeSwitcher": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "Metadata": {
+    "title": "Next",
+    "description": "A starter template for Next.js with TypeScript, Tailwind CSS, Internationalization, and more."
+  },
+  "Chat": {
+    "errors": {
+      "noAnswer": "Sorry, I couldn't find an answer to your question."
+    },
+    "placeholders": {
+      "text": "What do you want to know?",
+      "listening": "Listening...",
+      "loading": "Loading..."
+    }
+  }
+}

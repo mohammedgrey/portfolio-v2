@@ -3,8 +3,8 @@
  * This ensures type safety across your application.
  */
 
-import type en from "../../messages/en.json";
 import type { Path } from "react-hook-form";
+import type en from "./messages/en.json";
 
 /**
  * Inferred types from the English JSON messages file.
