@@ -1,20 +1,20 @@
+import ModalManager from "@/components/modules/modal/ModalManager";
 import LocaleProvider from "@/components/wrappers/LocaleProvider";
 import { PrimaryColorProvider } from "@/components/wrappers/PrimaryColorProvider";
+import StoreProvider from "@/components/wrappers/StoreProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Raleway } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/react";
+import { Toaster } from "sonner";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const font = Raleway({
   subsets: ["latin"],
+  variable: "--font-app-font",
   display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
 });
 
 type Props = {
@@ -49,9 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       dir={locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${font.variable} antialiased`}>
         <LocaleProvider locale={locale}>
           <ThemeProvider
             attribute="class"
@@ -59,7 +57,15 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <PrimaryColorProvider>{children}</PrimaryColorProvider>
+            <StoreProvider>
+              <NuqsAdapter>
+                <PrimaryColorProvider>
+                  {children}
+                  <ModalManager />
+                  <Toaster position="top-right" />
+                </PrimaryColorProvider>
+              </NuqsAdapter>
+            </StoreProvider>
           </ThemeProvider>
         </LocaleProvider>
       </body>
