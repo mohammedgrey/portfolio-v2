@@ -1,5 +1,4 @@
 {
-  "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -12,5 +11,5 @@
   "eslint.enable": true,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
-  "cSpell.words": ["usehooks"]
+  "cSpell.words": ["GLTF", "metalness", "Nuqs", "persistor", "usehooks"]
 }
