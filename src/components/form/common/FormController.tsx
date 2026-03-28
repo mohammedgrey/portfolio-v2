@@ -25,7 +25,7 @@ const FormController = <T extends FieldValues>({
         onChange={() => {
           form.setError("root", { message: "" });
         }}
-        onSubmit={form.handleSubmit(onSubmit, console.error)}
+        onSubmit={form.handleSubmit(onSubmit, console.log)}
         {...props}
         className={cn("space-y-4", props.className)}
       >
@@ -35,7 +35,7 @@ const FormController = <T extends FieldValues>({
           <p
             className={cn(
               "text-center font-semibold text-destructive",
-              errorMessageClassName
+              errorMessageClassName,
             )}
           >
             {form.formState.errors.root.message}

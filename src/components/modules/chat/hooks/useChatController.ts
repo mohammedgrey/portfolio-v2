@@ -1,3 +1,4 @@
+import { GeminiApiError } from "@/app/api/gemini/types";
 import type { ChatInputProps } from "@/components/modules/chat/components/ChatInput";
 import { useAppTranslations } from "@/i18n";
 import {
@@ -15,10 +16,12 @@ import {
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { Message } from "@/types/common";
 import { useGeminiClient } from "./useGemini";
+import { useRateLimit } from "./useRateLimit";
 
 const useChatController = () => {
   const t = useAppTranslations("Chat");
   const { ask } = useGeminiClient();
+  const { isRateLimited, resetTime, handleRateLimitError } = useRateLimit();
 
   const input = useAppSelector(selectChatInput);
   const sessionId = useAppSelector(selectSessionId);
@@ -60,17 +63,10 @@ const useChatController = () => {
   const getApiResponse = async (message: string) => {
     // Call the Gemini API using the context from useGeminiClient
     try {
-      const response = await ask(message);
-      // response should match your GeminiResponseSchema
-      if (response.type === "simple_answer") {
-        return response.answer;
-      } else if (response.type === "answer_with_action") {
-        // You can format the action however you want for the chat
-        return `${response.answer}\n\n[Action: ${response.action}]`;
-      }
-      return "No valid response from AI.";
+      const response = await ask(message, messages);
+      // response is now a simple object with just an answer property
+      return response.answer || "No response from AI.";
     } catch (err) {
-      console.error("Gemini API error:", err);
       throw err;
     }
   };
@@ -85,11 +81,23 @@ const useChatController = () => {
         content: responseText,
       });
     } catch (error) {
-      console.error("Error fetching AI response:", error);
+      // Check if error has Gemini API error details
+      const hasErrorCode =
+        error && typeof error === "object" && "errorCode" in error;
+      const apiError = hasErrorCode ? (error as GeminiApiError) : null;
+
+      // Handle rate limit
+      if (apiError) {
+        handleRateLimitError(apiError.errorCode, apiError.resetTime);
+      }
+
       addMessage({
         id: `error-${(Date.now() + 1).toString()}`,
         role: "error",
-        content: t("errors.noAnswer"),
+        content: hasErrorCode ? "" : t("errors.noAnswer"),
+        errorCode: apiError?.errorCode,
+        resetTime: apiError?.resetTime,
+        remaining: apiError?.remaining,
       } as const);
     } finally {
       setLoadingNewMessage(false);
@@ -113,6 +121,7 @@ const useChatController = () => {
     value: input,
     onChange: setInput,
     onSend: handleSendMessageFromInput,
+    disabled: isRateLimited || loadingNewMessage,
   } satisfies ChatInputProps;
 
   return {
@@ -124,6 +133,8 @@ const useChatController = () => {
     hasMessages,
     sessionId,
     setSessionId,
+    isRateLimited,
+    resetTime,
   };
 };
 

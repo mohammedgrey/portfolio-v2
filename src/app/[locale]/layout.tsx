@@ -1,13 +1,17 @@
+import PageBackground from "@/components/common/PageBackground";
 import ModalManager from "@/components/modules/modal/ModalManager";
+import { Toaster } from "@/components/ui/sonner";
 import LocaleProvider from "@/components/wrappers/LocaleProvider";
 import { PrimaryColorProvider } from "@/components/wrappers/PrimaryColorProvider";
+import PrimaryFaviconSync from "@/components/wrappers/PrimaryFaviconSync";
+import ScrollToTopOnReload from "@/components/wrappers/ScrollToTopOnReload";
 import StoreProvider from "@/components/wrappers/StoreProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
+import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/react";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 const font = Raleway({
@@ -30,13 +34,66 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getAppTranslations({ locale, namespace: "Metadata" });
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const baseUrl = siteUrl ? new URL(siteUrl) : undefined;
+  const canonicalPath = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const canonicalUrl = baseUrl
+    ? new URL(canonicalPath, baseUrl).toString()
+    : undefined;
+
+  const languages = Object.fromEntries(
+    routing.locales.map((localeItem) => [
+      localeItem,
+      localeItem === routing.defaultLocale ? "/" : `/${localeItem}`,
+    ]),
+  );
+
+  const keywords = t("keywords")
+    .split(",")
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
 
   return {
     title: t("title"),
     description: t("description"),
+    keywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("description"),
+      siteName: "Mohammed Dawood Portfolio",
+      locale,
+      ...(canonicalUrl ? { url: canonicalUrl } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+    ...(baseUrl
+      ? {
+          metadataBase: baseUrl,
+          alternates: {
+            canonical: canonicalPath,
+            languages,
+          },
+        }
+      : {}),
   };
 }
 
@@ -50,6 +107,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body className={`${font.variable} antialiased`}>
+        <PageBackground />
         <LocaleProvider locale={locale}>
           <ThemeProvider
             attribute="class"
@@ -60,9 +118,12 @@ export default async function LocaleLayout({ children, params }: Props) {
             <StoreProvider>
               <NuqsAdapter>
                 <PrimaryColorProvider>
-                  {children}
-                  <ModalManager />
-                  <Toaster position="top-right" />
+                  <PrimaryFaviconSync />
+                  <ScrollToTopOnReload>
+                    {children}
+                    <ModalManager />
+                    <Toaster position="top-right" />
+                  </ScrollToTopOnReload>
                 </PrimaryColorProvider>
               </NuqsAdapter>
             </StoreProvider>

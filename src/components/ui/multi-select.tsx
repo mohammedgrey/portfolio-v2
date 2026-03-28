@@ -55,11 +55,11 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         ref.current = node;
       }
     },
-    [ref]
+    [ref],
   );
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState<SelectOptionValue[]>(
-    value ?? []
+    value ?? [],
   );
 
   const handleUnselect = React.useCallback((option: SelectOptionValue) => {
@@ -85,7 +85,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         }
       }
     },
-    []
+    [],
   );
 
   const selectables = options;
@@ -94,6 +94,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   React.useEffect(() => {
     onChange(selected ?? []);
   }, [selected, onChange]);
+
+  React.useEffect(() => {
+    setSelected(value ?? []);
+  }, [value]);
 
   const handleClear = () => {
     setSelected([]);
@@ -109,14 +113,17 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         aria-invalid={ariaInvalid}
         autoFocus
         className={cn(
-          "group px-1 min-h-9 py-[6px] text-sm",
-          "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input rounded-md border bg-transparent text-base shadow-xs outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          "group flex min-h-11 items-center px-1 py-1.5 text-sm",
+          "placeholder:text-muted-foreground backdrop-blur-md selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input rounded-md border bg-transparent text-base outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
           "focus-within:border-ring focus-within:ring-ring/10 focus-within:ring-[3px]",
-          "aria-invalid:ring-destructive/10 dark:aria-invalid:ring-destructive/30 aria-invalid:border-destructive"
+          "aria-invalid:ring-destructive/10 dark:aria-invalid:ring-destructive/30 aria-invalid:border-destructive",
         )}
       >
         <div
-          className={cn(selected?.length > 0 && "ms-2", "flex flex-wrap gap-1")}
+          className={cn(
+            selected?.length > 0 && "ms-2",
+            "flex w-full flex-wrap items-center gap-1",
+          )}
         >
           {selected.map((option) => {
             return (
@@ -124,7 +131,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                 {options.find((o) => o.value === option)?.label ?? ""}
                 <button
                   type="button"
-                  className="ms-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="ms-1 cursor-pointer rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       handleUnselect(option);
@@ -148,18 +155,18 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
             onFocus={() => setOpen(true)}
             disabled={disabled}
             placeholder={placeholder ?? "Select options..."}
-            className="ms-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+            className="ms-2 min-h-6 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
           />
           {clearable && !!value?.length && (
             <button
               type="button"
               onClick={handleClear}
-              className="flex mt-[2px] hover:bg-muted rounded-full h-5 w-5 items-center justify-center"
+              className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full hover:bg-muted"
             >
               <CloseIcon className="size-4 text-muted-foreground" />
             </button>
           )}
-          <ChevronDownIcon className="size-3 text-muted-foreground me-2 mt-[5.5px]" />
+          <ChevronDownIcon className="me-2 size-3 self-center text-muted-foreground" />
         </div>
       </div>
       {open && selectables?.length > 0 ? (
@@ -178,7 +185,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                   onSelect={() => {
                     if (alreadySelected)
                       setSelected((prev) =>
-                        prev.filter((s) => s !== option.value)
+                        prev.filter((s) => s !== option.value),
                       );
                     else setSelected((prev) => [...prev, option.value]);
                   }}

@@ -6,7 +6,9 @@
     "copy": "Copy",
     "copiedToClipboard": "Copied to clipboard",
     "noDataFound": "No data found",
-    "noDataFoundDescription": "There is no data to display here at the moment."
+    "noDataFoundDescription": "There is no data to display here at the moment.",
+    "copyCode": "Copy Code",
+    "footerRightsReserved": "© {year} Mohammed Dawood. All rights reserved."
   },
   "HomePage": {
     "title": "To get started, edit the page.tsx file.",
@@ -18,14 +20,79 @@
       "text": "This is nested text"
     },
     "hero": {
-      "title": "Welcome to Next.js!",
-      "description": "Get started by editing",
-      "inputPlaceholder": "What do you want to know?"
+      "title": "Hi, I'm Mohammed 👋",
+      "description": "Senior Software Engineer & Full Stack Developer. Front-end specialist with deep expertise in React and modern web technologies.",
+      "inputPlaceholder": "Ask my AI assistant about my projects, experience, or skills..."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "description": "Technologies I use to design, build, and ship reliable products. Select any item to learn how I apply it in real projects.",
+      "expertiseLevel": "Expertise Level",
+      "expertiseLabels": {
+        "level1": "Beginner",
+        "level2": "Intermediate",
+        "level3": "Advanced",
+        "level4": "Expert",
+        "level5": "Master"
+      },
+      "react": {
+        "description": "My core framework for building maintainable, production-grade interfaces. I use React extensively across enterprise dashboards and customer-facing applications."
+      },
+      "nextjs": {
+        "description": "My go-to framework for full-stack React applications. I use SSR, SSG, server actions, API routes, and performance optimization patterns in production environments."
+      },
+      "typescript": {
+        "description": "I build all modern projects with TypeScript to improve code quality, maintainability, and team velocity through strong type-safe architecture."
+      },
+      "node": {
+        "description": "Experienced in building scalable backend services, REST APIs, and real-time applications with Node.js, Express, and NestJS."
+      },
+      "docker": {
+        "description": "I use Docker to standardize development and deployment workflows, including multi-service environments with Docker Compose."
+      },
+      "ai": {
+        "description": "I integrate AI capabilities into products using modern APIs, practical prompt design, and evaluation-driven workflows to ship useful features faster."
+      },
+      "flutter": {
+        "description": "Hands-on experience building cross-platform mobile applications for iOS and Android with production-focused Flutter architecture."
+      },
+      "vue": {
+        "description": "Experience building applications with Vue 3, the Composition API, and scalable state-management patterns."
+      }
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "description": "Production applications delivered across multiple industries, with a focus on performance, usability, and business impact.",
+      "currentYear": "Current Year",
+      "showMore": "Show More",
+      "showLess": "Show Less",
+      "filters": {
+        "type": "Filter by domain",
+        "tech": "Filter by technology",
+        "year": "Filter by year"
+      },
+      "empty": {
+        "title": "Can't Find What You're Looking For?",
+        "message": "Maybe your filters are too specific, or this type of project isn't listed publicly yet for confidentiality reasons.",
+        "resetFilters": "Reset Filters",
+        "emailMeDirectly": "Email Me Directly",
+        "askAiAssistant": "Ask My AI Assistant"
+      }
     },
     "generate": {
-      "title": "Generate Section",
-      "description": "This is the generate section description.",
-      "action": "Generate & Download"
+      "title": "Resume Generator",
+      "description": "Generate an up-to-date resume with configurable sections tailored to your context.",
+      "action": "Generate & Download",
+      "livePreview": "Live Preview",
+      "customize": "Customize Resume",
+      "customizeDesc": "Toggle sections to include in the resume",
+      "sections": {
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education",
+        "interests": "Interests & Languages",
+        "projects": "Projects"
+      }
     }
   },
   "PrimaryColorSwitcher": {
@@ -42,17 +109,160 @@
     "dark": "Dark"
   },
   "Metadata": {
-    "title": "Next",
-    "description": "A starter template for Next.js with TypeScript, Tailwind CSS, Internationalization, and more."
+    "title": "Mohammed Dawood | Senior Software Engineer & React Expert",
+    "description": "Senior Software Engineer specializing in React, Next.js, and TypeScript, with strong product design awareness and practical AI-powered delivery workflows.",
+    "keywords": "Mohammed Dawood, Senior Software Engineer, React Developer, Next.js Portfolio, TypeScript, Full-Stack Developer, Frontend Engineer, Product Engineering, AI Integration"
+  },
+  "HeaderText": {
+    "name": "Mohammed Dawood",
+    "title": "Senior Software Engineer | React Expert"
   },
   "Chat": {
     "errors": {
-      "noAnswer": "Sorry, I couldn't find an answer to your question."
+      "noAnswer": "Sorry, I couldn't find an answer to your question.",
+      "rateLimit": {
+        "title": "Daily Limit Reached",
+        "message": "You've reached the daily question limit. Please try again later, or contact {name} directly for a faster response."
+      },
+      "missingFields": {
+        "title": "Missing Information",
+        "message": "Your request appears incomplete. Please rephrase your question and try again."
+      },
+      "apiKeyNotConfigured": {
+        "title": "Service Configuration Error",
+        "message": "The AI service is temporarily unavailable due to a configuration issue. Please contact {name} directly while this is being resolved."
+      },
+      "geminiQuotaExceeded": {
+        "title": "Service Quota Reached",
+        "message": "The AI service has reached its usage quota for now. Please try again later, or contact {name} directly."
+      },
+      "emptyResponse": {
+        "title": "No Response Generated",
+        "message": "No answer was returned for that request. Please try rephrasing your question."
+      },
+      "internalError": {
+        "title": "Something Went Wrong",
+        "message": "An internal error occurred while processing your request. Please try again."
+      },
+      "unexpectedError": {
+        "title": "Unexpected Error",
+        "message": "Something unexpected happened. Please try again in a moment."
+      }
     },
     "placeholders": {
       "text": "What do you want to know?",
-      "listening": "Listening...",
-      "loading": "Loading..."
+      "listening": "I'm listening...",
+      "loading": "I'm generating an answer..."
+    },
+    "actions": {
+      "tryAgain": "Try Again",
+      "resetsAt": "Resets on {day} at {time}"
+    },
+    "banners": {
+      "rateLimitReached": "Daily limit reached"
+    },
+    "suggestions": {
+      "title": "How can I help you?",
+      "description": "Get started with one of these suggestions",
+      "experience": {
+        "title": "Work Experience",
+        "description": "Learn about my professional journey and roles",
+        "message": "Tell me about your work experience and professional background"
+      },
+      "skills": {
+        "title": "Skills & Expertise",
+        "description": "Discover my technical skills and expertise areas",
+        "message": "What are your main technical skills and areas of expertise?"
+      },
+      "projects": {
+        "title": "Featured Projects",
+        "description": "Explore the projects I've built and contributed to",
+        "message": "Show me some of your most interesting projects"
+      }
+    },
+    "projectReferences": {
+      "title": "Project References",
+      "description": "Here are some projects related to your question:"
+    },
+    "techReferences": {
+      "title": "Tech References",
+      "description": "Here are some technologies related to your question:"
     }
+  },
+  "ContactPage": {
+    "title": "Get In Touch",
+    "subtitle": "Have a question or a project in mind? I'd be glad to connect.",
+    "contactThrough": "Contact Me Through",
+    "contactNameThrough": "Contact {name} Through",
+    "contactThroughDesc": "Choose your preferred way to reach out",
+    "emailDirectly": "Email Me Directly",
+    "emailDirectlyDesc": "Send me a message and I'll get back to you soon",
+    "email": "Email",
+    "phone": "Phone",
+    "or": "OR",
+    "copiedToClipboard": "Copied to clipboard",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "Your email",
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "body": "Message",
+      "bodyPlaceholder": "Please write your message here...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again.",
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMin": "Name must be at least 2 characters",
+        "nameMax": "Name must not exceed 100 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "subjectRequired": "Subject is required",
+        "subjectMin": "Subject must be at least 3 characters",
+        "subjectMax": "Subject must not exceed 200 characters",
+        "bodyRequired": "Message is required",
+        "bodyMin": "Message must be at least 10 characters",
+        "bodyMax": "Message must not exceed 1000 characters",
+        "recaptchaRequired": "Please complete the reCAPTCHA verification"
+      }
+    }
+  },
+  "Projects": {
+    "briefs": {
+      "masroof": "Architected and developed a comprehensive digital platform for school canteen management and digitization that connects suppliers and specialists. Features include a school management dashboard, parent mobile application, and electronic bracelet for students. Successfully transformed the entire operational process by streamlining purchase and payment workflows while reducing paper-based cash transactions, contributing to the creation of smart and secure school environments.",
+      "ktMessenger": "Architected a secure, enterprise-grade messaging platform with end-to-end encryption protocols and rich multimedia support. Implemented advanced security features ensuring complete message privacy while maintaining seamless real-time communication and media exchange capabilities.",
+      "corners": "Contributed to a high-traffic food delivery platform by developing cross-platform UI components for iOS and Android. Led critical refactoring initiatives to improve code maintainability and resolved complex bugs, enhancing overall application stability and user experience.",
+      "atHomeDoc": "Architected a sophisticated microservices-based ERP system with dynamic module capabilities. Pioneered a data-driven UI framework that dynamically renders role-based interfaces through configuration objects, enabling seamless integration between frontend widgets and backend services. This architecture significantly reduced development time for new features while maintaining enterprise-level security and scalability.",
+      "macQueen": "Delivered comprehensive full-stack contributions to a high-scale hotel booking platform across mobile and web channels. Developed production-ready React Native screens for iOS and Android while orchestrating strategic refactoring efforts to optimize code quality and maintainability across the entire technology stack.",
+      "gebhaly": "Engineered critical customer-facing features for a large-scale e-commerce platform, including content management systems, promotional pages, and customer support interfaces. Led the development of responsive email templates and spearheaded the creation of the company's Chrome extension, delivering enhanced user engagement and shopping convenience across multiple touchpoints.",
+      "egParcelExpress": "Architected and delivered a complete enterprise-grade international shipping platform from ground up using Next.js. Owned the entire client-side architecture, implementing complex shipping logistics workflows, real-time tracking interfaces, and seamless user experiences for global shipping operations.",
+      "lookMeUp": "Engineered a sophisticated search engine with custom web crawling and indexing algorithms processing over 5,000 pages. Collaborated cross-functionally to build both backend distributed systems for content processing and intuitive frontend interfaces, implementing ranking algorithms and query optimization for efficient information retrieval.",
+      "iziHandmade": "Independently architected and delivered a full-stack e-commerce platform with comprehensive role-based access control and multi-provider authentication. Implemented secure end-to-end solutions featuring OAuth integration with Facebook and Google, advanced admin capabilities for inventory management, and granular permission systems across both client and server layers.",
+      "egySchools": "Developed a comprehensive school management ecosystem during professional internship with Datatec, integrating real-time notifications, transportation tracking, and academic progress monitoring. Engineered cross-platform solutions with Flutter mobile apps for students, parents, and drivers, alongside a React.js admin dashboard for staff operations. Implemented complex CRUD workflows managing users, routes, schedules, and educational milestones, creating a unified platform enhancing school-family communication.",
+      "spotifyClone": "Collaborated within a five-member team to build a sophisticated music streaming platform replicating Spotify's core functionality. Architected state management solutions using Redux, implemented complex search algorithms, and developed user-centric features including profile management and help systems, ensuring seamless navigation and optimal performance.",
+      "santaGame": "Engineered a game using Entity Component System (ECS) architecture in collaboration with a four-member team. Owned the design and implementation of core game logic and collision detection systems, leveraging OpenGL for rendering while maintaining clean separation of concerns through architectural patterns.",
+      "gradesAutofiller": "Developed an intelligent automated grading system utilizing computer vision and image processing algorithms to recognize and process bubble sheet examinations. Implemented advanced OpenCV techniques for accurate mark detection, optical character recognition, and automated grade calculation, significantly reducing manual grading overhead.",
+      "harvardProcessor": "Architected and implemented a Harvard-based processor adhering to RISC principles in a collaborative four-member team. Designed the complete instruction pipeline, memory hierarchy, and control unit using VHDL, delivering a functional processor demonstrating deep understanding of computer architecture fundamentals.",
+      "fontClassifier": "Developed a machine learning solution for handwritten font classification in collaboration with a four-member team. Implemented feature extraction pipelines, trained and optimized classification models using scikit-learn, and employed computer vision techniques to achieve high-accuracy font recognition from handwritten samples.",
+      "srp": "Implemented a Selective Repeat Protocol (SRP) simulation demonstrating advanced understanding of reliable data transmission mechanisms. Modeled network behavior, packet loss scenarios, and acknowledgment strategies using OMNeT++ framework, validating protocol efficiency through comprehensive testing and performance analysis."
+    }
+  },
+  "Domains": {
+    "education": "Education",
+    "messaging": "Messaging",
+    "delivery": "Delivery",
+    "enterprise": "Enterprise",
+    "hospitality": "Hospitality",
+    "ecommerce": "E-Commerce",
+    "logistics": "Logistics",
+    "search": "Search",
+    "entertainment": "Entertainment",
+    "gaming": "Gaming",
+    "aiMl": "AI/ML",
+    "hardware": "Hardware",
+    "networking": "Networking"
   }
 }

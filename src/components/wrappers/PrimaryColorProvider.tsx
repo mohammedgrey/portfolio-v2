@@ -5,34 +5,29 @@ import { useLocalStorage } from "usehooks-ts";
 
 const primaryColors = [
   {
-    name: "grey",
-    value: "oklch(0.3846 0.0173 258.37)",
-    class: "bg-[oklch(0.3846_0.0173_258.37)]",
-  },
-  {
     name: "blue",
-    value: "oklch(0.8 0.15 230)",
-    class: "bg-[oklch(0.8_0.15_230)]",
+    value: "oklch(0.52 0.12 250)",
+    class: "bg-[oklch(0.52_0.12_250)]",
   },
   {
     name: "green",
-    value: "oklch(0.75 0.12 160)",
-    class: "bg-[oklch(0.75_0.12_160)]",
+    value: "oklch(0.5 0.11 165)",
+    class: "bg-[oklch(0.5_0.11_165)]",
   },
   {
     name: "purple",
-    value: "oklch(0.7 0.18 280)",
-    class: "bg-[oklch(0.7_0.18_280)]",
+    value: "oklch(0.5774 0.2091 273.85)",
+    class: "bg-[oklch(0.5774_0.2091_273.85)]",
   },
   {
     name: "orange",
-    value: "oklch(0.8 0.15 70)",
-    class: "bg-[oklch(0.8_0.15_70)]",
+    value: "oklch(0.5774 0.1085 65.65)",
+    class: "bg-[oklch(0.5774_0.1085_65.65)]",
   },
   {
     name: "red",
-    value: "oklch(0.75 0.12 40)",
-    class: "bg-[oklch(0.75_0.12_40)]",
+    value: "oklch(0.52 0.13 20)",
+    class: "bg-[oklch(0.52_0.13_20)]",
   },
 ] as const;
 
@@ -45,7 +40,7 @@ type PrimaryColorContextType = {
 };
 
 const PrimaryColorContext = createContext<PrimaryColorContextType | undefined>(
-  undefined
+  undefined,
 );
 
 const DEFAULT_COLOR = primaryColors[0];
@@ -93,7 +88,7 @@ export function usePrimaryColor() {
   const context = useContext(PrimaryColorContext);
   if (context === undefined) {
     throw new Error(
-      "usePrimaryColor must be used within a PrimaryColorProvider"
+      "usePrimaryColor must be used within a PrimaryColorProvider",
     );
   }
   return context;

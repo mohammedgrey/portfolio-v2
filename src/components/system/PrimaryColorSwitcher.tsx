@@ -18,17 +18,19 @@ export function PrimaryColorSwitcher() {
   const t = useTranslations("PrimaryColorSwitcher");
 
   return (
-    <WhenHydrated fallback={<div className="w-30 h-10" />}>
+    <WhenHydrated fallback={<div className="h-10 w-10 sm:w-30" />}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
             size="sm"
-            className="h-10 flex justify-between w-30 px-3 gap-2"
+            className="h-10 w-10 px-0 flex justify-center gap-2 sm:w-30 sm:px-3 sm:justify-between"
           >
             <Palette className="h-4 w-4" />
-            <span>{t(currentColor.name)}</span>
-            <div className={`w-3 h-3 rounded-full ${currentColor.class}`} />
+            <span className="hidden sm:inline">{t(currentColor.name)}</span>
+            <div
+              className={`hidden w-3 h-3 rounded-full sm:block ${currentColor.class}`}
+            />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

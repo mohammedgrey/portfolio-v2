@@ -1,68 +1,85 @@
+import { useAppTranslations } from "@/i18n";
 import { StackItem } from "@/types/common";
+import { TechEnum } from "@/types/enums";
 
 const useStackItems = () => {
+  const t = useAppTranslations("HomePage");
+
   const stackItems: StackItem[] = [
     {
       id: "react",
-      title: "React",
-      description: "UI library for building component-based interfaces",
+      title: TechEnum.React,
+      description: t("stack.react.description"),
       model: "/assets/models/react.glb",
       color: "#61DAFB",
+      expertise: 5,
     },
     {
       id: "nextjs",
-      title: "Next.js",
-      description: "React framework for production",
+      title: TechEnum.NextJS,
+      description: t("stack.nextjs.description"),
       model: "/assets/models/next.glb",
       color: "#ffffff",
+      expertise: 5,
     },
     {
       id: "typescript",
-      title: "TypeScript",
-      description: "Typed superset of JavaScript",
+      title: TechEnum.Typescript,
+      description: t("stack.typescript.description"),
       model: "/assets/models/typescript.glb",
       color: "#007ACC",
+      expertise: 5,
     },
     {
       id: "node",
-      title: "Node.js",
-      description: "JavaScript runtime built on Chrome's V8 JavaScript engine",
+      title: TechEnum.NodeJS,
+      description: t("stack.node.description"),
       model: "/assets/models/node.glb",
       color: "#83CD29",
+      expertise: 4,
     },
-    {
-      id: "docker",
-      title: "Docker",
-      description:
-        "Platform for developing, shipping, and running applications",
-      model: "/assets/models/docker.glb",
-      color: "#0091e2",
-    },
+
     {
       id: "ai",
-      title: "AI",
-      description: "Artificial Intelligence technologies and frameworks",
+      title: TechEnum.AI,
+      description: t("stack.ai.description"),
       model: "/assets/models/ai.glb",
       color: "#ffffff",
+      expertise: 4,
     },
     {
       id: "flutter",
-      title: "Flutter",
-      description: "UI toolkit for building natively compiled applications",
+      title: TechEnum.Flutter,
+      description: t("stack.flutter.description"),
       model: "/assets/models/flutter.glb",
       color: "#46d0fe",
+      expertise: 4,
     },
     {
       id: "vue",
-      title: "Vue.js",
-      description: "JavaScript framework for building user interfaces",
+      title: TechEnum.Vue,
+      description: t("stack.vue.description"),
       model: "/assets/models/vue.glb",
       color: "#41B883",
+      expertise: 4,
     },
-  ];
+    {
+      id: "docker",
+      title: TechEnum.Docker,
+      description: t("stack.docker.description"),
+      model: "/assets/models/docker.glb",
+      color: "#0091e2",
+      expertise: 3,
+    },
+  ] as StackItem[];
+
+  const getStackItemsFromTitles = (titles: TechEnum[]) => {
+    return stackItems.filter((item) => titles.includes(item.title));
+  };
 
   return {
     stackItems,
+    getStackItemsFromTitles,
   };
 };
 export default useStackItems;

@@ -26,16 +26,16 @@ const getAuthToken = cache(async (): Promise<string | undefined> => {
 /** Replace path parameters in endpoint */
 function buildEndpoint(
   endpoint: string,
-  pathParams?: Record<string, string | number>
+  pathParams?: Record<string, string | number>,
 ): string {
   if (!pathParams) return endpoint;
   return Object.entries(pathParams).reduce(
     (url, [key, value]) =>
       url.replace(
         new RegExp(`\\{${key}\\}`, "g"), // match {id}, {name}, etc.
-        encodeURIComponent(String(value))
+        encodeURIComponent(String(value)),
       ),
-    endpoint
+    endpoint,
   );
 }
 
@@ -62,7 +62,7 @@ export class APIClient<Schema extends APISchemaByMethod> {
   /** Build URL with query params */
   private buildURL(
     endpoint: string,
-    params?: Record<string, string | number | boolean | null | undefined>
+    params?: Record<string, string | number | boolean | null | undefined>,
   ): string {
     const url = new URL(endpoint, this.baseURL);
     if (params) {
@@ -77,7 +77,7 @@ export class APIClient<Schema extends APISchemaByMethod> {
   /** Request interceptor */
   private async beforeRequest(
     url: string,
-    options: RequestInit & { headers?: HeadersInit }
+    options: RequestInit & { headers?: HeadersInit },
   ) {
     const token = await getAuthToken();
     const headers: Record<string, string> = {
@@ -104,11 +104,11 @@ export class APIClient<Schema extends APISchemaByMethod> {
   /** Unified request method */
   async request<
     MethodName extends keyof Schema & string,
-    Endpoint extends keyof Schema[MethodName] & string
+    Endpoint extends keyof Schema[MethodName] & string,
   >(
     method: MethodName,
     endpoint: Endpoint,
-    options?: APIOptions<Schema[MethodName][Endpoint]>
+    options?: APIOptions<Schema[MethodName][Endpoint]>,
   ): Promise<
     Schema[MethodName][Endpoint] extends { response: infer R } ? R : never
   > {
@@ -120,14 +120,14 @@ export class APIClient<Schema extends APISchemaByMethod> {
 
     const url = buildEndpoint(
       endpoint,
-      pathParams as Record<string, string | number>
+      pathParams as Record<string, string | number>,
     );
     const fullURL = this.buildURL(
       url,
       queryParams as Record<
         string,
         string | number | boolean | null | undefined
-      >
+      >,
     );
 
     const fetchOptions: RequestInit = {
@@ -151,35 +151,35 @@ export class APIClient<Schema extends APISchemaByMethod> {
   /** Shortcut methods */
   get<E extends keyof Schema["GET"] & string>(
     endpoint: E,
-    options?: APIOptions<Schema["GET"][E]>
+    options?: APIOptions<Schema["GET"][E]>,
   ) {
     return this.request("GET", endpoint, options);
   }
 
   post<E extends keyof Schema["POST"] & string>(
     endpoint: E,
-    options?: APIOptions<Schema["POST"][E]>
+    options?: APIOptions<Schema["POST"][E]>,
   ) {
     return this.request("POST", endpoint, options);
   }
 
   put<E extends keyof Schema["PUT"] & string>(
     endpoint: E,
-    options?: APIOptions<Schema["PUT"][E]>
+    options?: APIOptions<Schema["PUT"][E]>,
   ) {
     return this.request("PUT", endpoint, options);
   }
 
   patch<E extends keyof Schema["PATCH"] & string>(
     endpoint: E,
-    options?: APIOptions<Schema["PATCH"][E]>
+    options?: APIOptions<Schema["PATCH"][E]>,
   ) {
     return this.request("PATCH", endpoint, options);
   }
 
   delete<E extends keyof Schema["DELETE"] & string>(
     endpoint: E,
-    options?: APIOptions<Schema["DELETE"][E]>
+    options?: APIOptions<Schema["DELETE"][E]>,
   ) {
     return this.request("DELETE", endpoint, options);
   }

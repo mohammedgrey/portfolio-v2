@@ -38,7 +38,7 @@ const CopyMessageButton: FC<CopyMessageButtonProps> = ({
               setJustCopied(true);
               setTimeout(() => setJustCopied(false), 2000);
             } catch (err) {
-              console.error("Failed to copy text: ", err);
+              console.log("Failed to copy text: ", err);
             }
           }}
         >

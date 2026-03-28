@@ -7,13 +7,16 @@ const HeroSection: FC = async () => {
   const t = await getAppTranslations("HomePage");
 
   return (
-    <AppSection id="hero" className="flex justify-center items-center">
-      <div className="flex w-2xl max-w-full flex-col gap-4">
-        <div className="flex flex-col gap-2">
+    <AppSection
+      id="hero"
+      className="flex justify-center min-h-[500px] items-center"
+    >
+      <div className="flex w-2xl max-w-full flex-col gap-12">
+        <div className="flex flex-col gap-4">
           <AppSection.Title>{t("hero.title")}</AppSection.Title>
-          <p className="text-lg text-muted-foreground text-center">
+          <AppSection.Description className="text-lg text-center">
             {t("hero.description")}
-          </p>
+          </AppSection.Description>
         </div>
         <div className="h-10">
           <AiInput />

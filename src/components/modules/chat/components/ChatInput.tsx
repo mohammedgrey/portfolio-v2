@@ -48,7 +48,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full flex flex-col rounded-md border border-input bg-transparent shadow-xs transition-[color,box-shadow] focus-within:border-ring  px-3 py-3 text-sm"
+      className="w-full flex flex-col rounded-md border border-input bg-transparent transition-[color,box-shadow] focus-within:border-ring  px-3 py-3 text-sm"
     >
       <div className="flex">
         <TextareaAutosize
@@ -69,7 +69,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             "grow",
             "resize-none bg-transparent placeholder:text-muted-foreground text-foreground",
             "outline-none border-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50",
-            "dark:bg-transparent"
+            "dark:bg-transparent",
           )}
         />
 
@@ -83,6 +83,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               }
               type="button"
               variant="ghost"
+              disabled={disabled}
               className={cn("w-8! h-8!", {
                 "animate-pulse text-primary!": listening,
               })}

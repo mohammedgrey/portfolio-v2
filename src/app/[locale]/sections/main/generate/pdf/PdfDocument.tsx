@@ -6,9 +6,14 @@ import { Document, Font } from "@react-pdf/renderer";
 import { NextIntlClientProvider } from "next-intl";
 import { FC } from "react";
 import { useCookies } from "react-cookie";
+import { ResumeConfigState } from "../ResumeConfig";
 import PdfContent from "./PdfContent";
 
-export const PdfDocument: FC = () => {
+interface PdfDocumentProps {
+  config?: ResumeConfigState;
+}
+
+const PdfDocument: FC<PdfDocumentProps> = ({ config }) => {
   const [cookies] = useCookies(["NEXT_LOCALE"]);
   const locale = (cookies["NEXT_LOCALE"] || "en") as string;
   const isEnglish = locale?.includes("en") || false;
@@ -18,23 +23,31 @@ export const PdfDocument: FC = () => {
       locale={locale}
       messages={isEnglish ? enMessages : arMessages}
     >
-      <Document>
-        <PdfContent />
+      <Document style={{ borderRadius: 8 }}>
+        <PdfContent config={config} />
       </Document>
     </NextIntlClientProvider>
   );
 };
 
 Font.register({
-  family: "PDFFont",
+  family: "Raleway",
   fonts: [
     {
-      src: "/fonts/PdfFontRegular.ttf",
-      fontWeight: 400, // normal
+      src: "/fonts/Raleway-400.woff",
+      fontWeight: 400,
     },
     {
-      src: "/fonts/PdfFontBold.ttf",
-      fontWeight: 700, // bold
+      src: "/fonts/Raleway-500.woff",
+      fontWeight: 500,
+    },
+    {
+      src: "/fonts/Raleway-600.woff",
+      fontWeight: 600,
+    },
+    {
+      src: "/fonts/Raleway-700.woff",
+      fontWeight: 700,
     },
   ],
 });

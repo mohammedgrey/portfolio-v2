@@ -34,20 +34,20 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <WhenHydrated fallback={<div className="w-30 h-10" />}>
+    <WhenHydrated fallback={<div className="h-10 w-10 sm:w-30" />}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
             size="sm"
-            className="h-10 flex justify-between w-30 px-3 gap-2"
+            className="h-10 w-10 px-0 flex justify-center gap-2 sm:w-30 sm:px-3 sm:justify-between"
             disabled={isPending}
           >
             <Globe className="h-4 w-4" />
-            <span>
+            <span className="hidden sm:inline">
               {localeNames[currentLocale as keyof typeof localeNames]}
             </span>
-            <ChevronDown className="h-3 w-3" />
+            <ChevronDown className="hidden h-3 w-3 sm:block" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

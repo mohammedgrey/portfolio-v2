@@ -1,0 +1,77 @@
+"use client";
+
+import MultiSelect, {
+  SelectOption,
+  SelectOptionValue,
+} from "@/components/ui/multi-select";
+import useDomainIcons from "@/hooks/logic/useDomainIcons";
+import { useAppTranslations } from "@/i18n";
+import { ProjectTypeEnum } from "@/types/enums";
+import { FC } from "react";
+
+interface ProjectsFiltersProps {
+  typeOptions: SelectOption[];
+  techOptions: SelectOption[];
+  yearOptions: SelectOption[];
+  selectedTypes: SelectOptionValue[];
+  setSelectedTypes: (types: SelectOptionValue[]) => void;
+  selectedTechs: SelectOptionValue[];
+  setSelectedTechs: (techs: SelectOptionValue[]) => void;
+  selectedYears: SelectOptionValue[];
+  setSelectedYears: (years: SelectOptionValue[]) => void;
+}
+
+const ProjectsFilters: FC<ProjectsFiltersProps> = ({
+  typeOptions,
+  techOptions,
+  yearOptions,
+  selectedTypes,
+  setSelectedTypes,
+  selectedTechs,
+  setSelectedTechs,
+  selectedYears,
+  setSelectedYears,
+}) => {
+  const t = useAppTranslations("HomePage");
+  const domainIcons = useDomainIcons();
+
+  // Localize year options
+  const localizedYearOptions = yearOptions.map((option) => ({
+    ...option,
+    label:
+      option.label === "currentYear" ? t("projects.currentYear") : option.label,
+  }));
+
+  return (
+    <div className="flex flex-col sm:flex-row gap-4 mb-8">
+      <MultiSelect
+        options={typeOptions}
+        value={selectedTypes}
+        onChange={setSelectedTypes}
+        placeholder={t("projects.filters.type")}
+        clearable
+        renderOption={({ label, value }) => (
+          <div className="flex items-center gap-2">
+            {domainIcons[value as ProjectTypeEnum]} {label}
+          </div>
+        )}
+      />
+      <MultiSelect
+        options={techOptions}
+        value={selectedTechs}
+        onChange={setSelectedTechs}
+        placeholder={t("projects.filters.tech")}
+        clearable
+      />
+      <MultiSelect
+        options={localizedYearOptions}
+        value={selectedYears}
+        onChange={setSelectedYears}
+        placeholder={t("projects.filters.year")}
+        clearable
+      />
+    </div>
+  );
+};
+
+export default ProjectsFilters;

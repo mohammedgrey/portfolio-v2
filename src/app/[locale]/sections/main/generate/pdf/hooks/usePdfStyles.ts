@@ -6,24 +6,26 @@ const usePdfStyles = () => {
   const isRtl = isArabic;
 
   const colors = {
-    primary: "#008755",
-    secondary: "#9b955e",
+    primary: "#111111",
+    secondary: "#5a6272",
 
     text: {
-      title: "#404040",
-      body: "#7a7a7a",
-      caption: "#6c7180",
+      title: "#101828",
+      body: "#1f2937",
+      caption: "#475467",
     },
-    border: "#EBF1FA",
-    card: "#f0f0f0",
-    surface: "#f7f7f7",
+    border: "#d7dce3",
+    card: "#f8fafc",
+    surface: "#eef1f5",
+    chipBg: "#f7f8fa",
+    chipBorder: "#dde2e8",
     success: "#1fb08d",
     error: "#ef5a5a",
     warning: "#F9A825",
   };
 
   const fontSizes = {
-    extraLarge: 14,
+    extraLarge: 15,
     large: 12,
     medium: 10,
     small: 9,
@@ -33,12 +35,14 @@ const usePdfStyles = () => {
 
   const fontWeights = {
     normal: 400,
+    medium: 500,
+    semiBold: 600,
     bold: 700,
   };
 
   const styles = StyleSheet.create({
     page: {
-      fontFamily: "PDFFont",
+      fontFamily: "Raleway",
       fontSize: fontSizes.medium,
       padding: 24,
       textAlign: isRtl ? "right" : "left",

@@ -21,6 +21,22 @@ const AppSectionTitle: FC<{
   );
 };
 
+const AppSectionSubtitle: FC<{
+  className?: string;
+  children?: React.ReactNode;
+}> = ({ className, children }) => {
+  return <h3 className={cn("text-2xl font-bold", className)}>{children}</h3>;
+};
+
+const AppSectionDescription: FC<{
+  className?: string;
+  children?: React.ReactNode;
+}> = ({ className, children }) => {
+  return <p className={cn("text-muted-foreground", className)}>{children}</p>;
+};
+
 AppSection.Title = AppSectionTitle;
+AppSection.Subtitle = AppSectionSubtitle;
+AppSection.Description = AppSectionDescription;
 
 export default AppSection;

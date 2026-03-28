@@ -12,7 +12,9 @@ const nextConfig: NextConfig = {
     rules: {
       // Make *.svg importable as React components
       "*.svg": {
-        loaders: [{ loader: "@svgr/webpack", options: { svgo: true } }],
+        loaders: [
+          { loader: "@svgr/webpack", options: { svgo: true, icon: true } },
+        ],
         as: "*.js",
       },
     },

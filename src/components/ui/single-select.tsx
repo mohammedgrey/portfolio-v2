@@ -55,12 +55,12 @@ const SingleSelect: React.FC<SingleSelectProps> = ({
         ref.current = node;
       }
     },
-    [ref]
+    [ref],
   );
 
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState<SelectOptionValue | null>(
-    value ?? null
+    value ?? null,
   );
   const [inputValue, setInputValue] = React.useState("");
 
@@ -85,11 +85,11 @@ const SingleSelect: React.FC<SingleSelectProps> = ({
         }
       }
     },
-    [clearable, selected, handleClear]
+    [clearable, selected, handleClear],
   );
 
   const selectables = options.filter((option) =>
-    option.label.toLowerCase().includes(inputValue.toLowerCase())
+    option.label.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   React.useEffect(() => {
@@ -109,13 +109,13 @@ const SingleSelect: React.FC<SingleSelectProps> = ({
         aria-invalid={ariaInvalid}
         autoFocus
         className={cn(
-          "group px-1 min-h-9 py-[6px] text-sm",
-          "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input rounded-md border bg-transparent text-base shadow-xs outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          "group flex min-h-11 items-center px-1 py-1.5 text-sm",
+          "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input rounded-md border bg-transparent text-base outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
           "focus-within:border-ring focus-within:ring-ring/10 focus-within:ring-[3px]",
-          "aria-invalid:ring-destructive/10 dark:aria-invalid:ring-destructive/30 aria-invalid:border-destructive"
+          "aria-invalid:ring-destructive/10 dark:aria-invalid:ring-destructive/30 aria-invalid:border-destructive",
         )}
       >
-        <div className="flex items-center gap-1">
+        <div className="flex w-full items-center gap-1">
           {selectedOption && (
             <div className="flex ps-2 items-center gap-1">
               <span className="text-sm text-foreground">
@@ -134,23 +134,23 @@ const SingleSelect: React.FC<SingleSelectProps> = ({
             onKeyDown={() => setOpen(true)}
             disabled={disabled}
             placeholder={
-              selectedOption ? "" : placeholder ?? "Select option..."
+              selectedOption ? "" : (placeholder ?? "Select option...")
             }
             className={cn(
-              "flex-1 bg-transparent outline-none placeholder:text-muted-foreground",
-              selectedOption ? "ms-0" : "ms-2"
+              "min-h-6 flex-1 bg-transparent outline-none placeholder:text-muted-foreground",
+              selectedOption ? "ms-0" : "ms-2",
             )}
           />
           {clearable && value != null && (
             <button
               type="button"
               onClick={handleClear}
-              className="flex mt-[2px] hover:bg-muted rounded-full h-5 w-5 items-center justify-center"
+              className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full hover:bg-muted"
             >
               <CloseIcon className="size-4 text-muted-foreground" />
             </button>
           )}
-          <ChevronDownIcon className="size-3 text-muted-foreground me-2 mt-[3.5px]" />
+          <ChevronDownIcon className="me-2 size-3 self-center text-muted-foreground" />
         </div>
       </div>
       {open && selectables?.length > 0 ? (

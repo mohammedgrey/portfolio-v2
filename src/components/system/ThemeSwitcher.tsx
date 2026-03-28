@@ -1,8 +1,8 @@
 "use client";
 
 import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -39,17 +39,17 @@ export function ThemeSwitcher() {
   const CurrentIcon = currentTheme.icon;
 
   return (
-    <WhenHydrated fallback={<div className="w-30 h-10" />}>
+    <WhenHydrated fallback={<div className="h-10 w-10 sm:w-30" />}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
             size="sm"
-            className="h-10 flex justify-between w-30 px-3 gap-2"
+            className="h-10 w-10 px-0 flex justify-center gap-2 sm:w-30 sm:px-3 sm:justify-between"
           >
             <CurrentIcon className="h-4 w-4" />
-            <span>{currentTheme.label}</span>
-            <ChevronDown className="h-3 w-3" />
+            <span className="hidden sm:inline">{currentTheme.label}</span>
+            <ChevronDown className="hidden h-3 w-3 sm:block" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

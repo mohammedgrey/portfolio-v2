@@ -1,7 +1,9 @@
 // Auto-generated file - Do not edit manually
 // This file is updated automatically by the update-icons script
-// Last updated: 2025-12-16T06:22:42.509Z
+// Last updated: 2026-01-24T07:35:48.933Z
 
+export { default as AiIcon } from "./svg/ai.svg";
+export { default as AppleIcon } from "./svg/apple.svg";
 export { default as ArrowDownIcon } from "./svg/arrow-down.svg";
 export { default as ArrowLeftIcon } from "./svg/arrow-left.svg";
 export { default as ArrowRightIcon } from "./svg/arrow-right.svg";
@@ -16,7 +18,11 @@ export { default as CopyIcon } from "./svg/copy.svg";
 export { default as DeleteIcon } from "./svg/delete.svg";
 export { default as EnterIcon } from "./svg/enter.svg";
 export { default as EscIcon } from "./svg/esc.svg";
+export { default as FacebookIcon } from "./svg/facebook.svg";
+export { default as GithubIcon } from "./svg/github.svg";
+export { default as GoogleIcon } from "./svg/google.svg";
 export { default as LinkIcon } from "./svg/link.svg";
+export { default as LinkedinIcon } from "./svg/linkedin.svg";
 export { default as LoadingIcon } from "./svg/loading.svg";
 export { default as MaximizeIcon } from "./svg/maximize.svg";
 export { default as MessagesIcon } from "./svg/messages.svg";
@@ -31,3 +37,4 @@ export { default as StarOutlinedIcon } from "./svg/star-outlined.svg";
 export { default as UserIcon } from "./svg/user.svg";
 export { default as UsersIcon } from "./svg/users.svg";
 export { default as VerifiedIcon } from "./svg/verified.svg";
+export { default as WhatsappIcon } from "./svg/whatsapp.svg";
