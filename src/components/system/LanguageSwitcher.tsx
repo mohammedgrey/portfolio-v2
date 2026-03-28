@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { Check, ChevronDown, Globe } from "lucide-react";
-import { useParams } from "next/navigation";
-import { useTransition } from "react";
+import { Check, ChevronDown, Globe, Loader2 } from "lucide-react";
+import { useLocale } from "next-intl";
+import { useEffect, useState, useTransition } from "react";
 import { WhenHydrated } from "../wrappers/WhenHydrated";
 
 const localeNames = {
@@ -22,12 +22,27 @@ const localeNames = {
 export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
+  const currentLocale = useLocale();
   const [isPending, startTransition] = useTransition();
+  const [optimisticLocale, setOptimisticLocale] = useState(currentLocale);
 
-  const currentLocale = params.locale as string;
+  useEffect(() => {
+    setOptimisticLocale(currentLocale);
+  }, [currentLocale]);
+
+  useEffect(() => {
+    routing.locales.forEach((locale) => {
+      if (locale !== currentLocale) {
+        router.prefetch(pathname, { locale });
+      }
+    });
+  }, [currentLocale, pathname, router]);
 
   const handleLocaleChange = (locale: string) => {
+    if (locale === currentLocale || isPending) return;
+
+    setOptimisticLocale(locale);
+
     startTransition(() => {
       router.replace(pathname, { locale });
     });
@@ -41,11 +56,14 @@ export function LanguageSwitcher() {
             variant="outline"
             size="sm"
             className="h-10 w-10 px-0 flex justify-center gap-2 sm:w-30 sm:px-3 sm:justify-between"
-            disabled={isPending}
           >
-            <Globe className="h-4 w-4" />
+            {isPending ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Globe className="h-4 w-4" />
+            )}
             <span className="hidden sm:inline">
-              {localeNames[currentLocale as keyof typeof localeNames]}
+              {localeNames[optimisticLocale as keyof typeof localeNames]}
             </span>
             <ChevronDown className="hidden h-3 w-3 sm:block" />
           </Button>

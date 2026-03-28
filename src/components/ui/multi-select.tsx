@@ -58,13 +58,14 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     [ref],
   );
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<SelectOptionValue[]>(
-    value ?? [],
-  );
+  const selected = value ?? [];
 
-  const handleUnselect = React.useCallback((option: SelectOptionValue) => {
-    setSelected((prev) => prev.filter((s) => s !== option));
-  }, []);
+  const handleUnselect = React.useCallback(
+    (option: SelectOptionValue) => {
+      onChange(selected.filter((s) => s !== option));
+    },
+    [onChange, selected],
+  );
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -72,11 +73,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
       if (input) {
         if (e.key === "Delete" || e.key === "Backspace") {
           if (input.value === "") {
-            setSelected((prev) => {
-              const newSelected = [...prev];
-              newSelected.pop();
-              return newSelected;
-            });
+            const newSelected = [...selected];
+            newSelected.pop();
+            onChange(newSelected);
           }
         }
         // This is not a default behavior of the <input /> field
@@ -85,22 +84,13 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         }
       }
     },
-    [],
+    [onChange, selected],
   );
 
   const selectables = options;
   // filter((option) => !selected?.includes(option.value)) ?? [];
 
-  React.useEffect(() => {
-    onChange(selected ?? []);
-  }, [selected, onChange]);
-
-  React.useEffect(() => {
-    setSelected(value ?? []);
-  }, [value]);
-
   const handleClear = () => {
-    setSelected([]);
     onChange([]);
   };
 
@@ -122,51 +112,55 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         <div
           className={cn(
             selected?.length > 0 && "ms-2",
-            "flex w-full flex-wrap items-center gap-1",
+            "flex w-full min-w-0 items-center gap-2",
           )}
         >
-          {selected.map((option) => {
-            return (
-              <Badge className="" key={option + ""} variant="outline">
-                {options.find((o) => o.value === option)?.label ?? ""}
-                <button
-                  type="button"
-                  className="ms-1 cursor-pointer rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleUnselect(option);
-                    }
-                  }}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                  onClick={() => handleUnselect(option)}
-                >
-                  <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
-                </button>
-              </Badge>
-            );
-          })}
-          {/* Avoid having the "Search" Icon */}
-          <CommandPrimitive.Input
-            ref={combinedRef}
-            onBlur={() => setOpen(false)}
-            onFocus={() => setOpen(true)}
-            disabled={disabled}
-            placeholder={placeholder ?? "Select options..."}
-            className="ms-2 min-h-6 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
-          />
-          {clearable && !!value?.length && (
-            <button
-              type="button"
-              onClick={handleClear}
-              className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full hover:bg-muted"
-            >
-              <CloseIcon className="size-4 text-muted-foreground" />
-            </button>
-          )}
-          <ChevronDownIcon className="me-2 size-3 self-center text-muted-foreground" />
+          <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1">
+            {selected.map((option) => {
+              return (
+                <Badge className="" key={option + ""} variant="outline">
+                  {options.find((o) => o.value === option)?.label ?? ""}
+                  <button
+                    type="button"
+                    className="ms-1 cursor-pointer rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        handleUnselect(option);
+                      }
+                    }}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onClick={() => handleUnselect(option)}
+                  >
+                    <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                  </button>
+                </Badge>
+              );
+            })}
+            <CommandPrimitive.Input
+              ref={combinedRef}
+              onBlur={() => setOpen(false)}
+              onFocus={() => setOpen(true)}
+              disabled={disabled}
+              placeholder={placeholder ?? "Select options..."}
+              className="ms-2 min-h-6 min-w-24 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+            />
+          </div>
+
+          <div className="ms-auto me-2 flex shrink-0 items-center gap-1">
+            {clearable && selected.length > 0 && (
+              <button
+                type="button"
+                onClick={handleClear}
+                className="flex h-5 w-5 cursor-pointer items-center justify-center rounded-full hover:bg-muted"
+              >
+                <CloseIcon className="size-4 text-muted-foreground" />
+              </button>
+            )}
+            <ChevronDownIcon className="size-3 text-muted-foreground" />
+          </div>
         </div>
       </div>
       {open && selectables?.length > 0 ? (
@@ -184,10 +178,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                   }}
                   onSelect={() => {
                     if (alreadySelected)
-                      setSelected((prev) =>
-                        prev.filter((s) => s !== option.value),
-                      );
-                    else setSelected((prev) => [...prev, option.value]);
+                      onChange(selected.filter((s) => s !== option.value));
+                    else onChange([...selected, option.value]);
                   }}
                   className={"flex w-full cursor-pointer justify-between gap-2"}
                 >

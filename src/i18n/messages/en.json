@@ -69,7 +69,8 @@
       "filters": {
         "type": "Filter by domain",
         "tech": "Filter by technology",
-        "year": "Filter by year"
+        "year": "Filter by year",
+        "other": "Other"
       },
       "empty": {
         "title": "Can't Find What You're Looking For?",
@@ -84,6 +85,8 @@
       "description": "Generate an up-to-date resume with configurable sections tailored to your context.",
       "action": "Generate & Download",
       "livePreview": "Live Preview",
+      "updatingPreview": "Updating preview...",
+      "updatingPreviewHint": "Regenerating the resume with your latest section choices.",
       "customize": "Customize Resume",
       "customizeDesc": "Toggle sections to include in the resume",
       "sections": {
@@ -263,6 +266,7 @@
     "gaming": "Gaming",
     "aiMl": "AI/ML",
     "hardware": "Hardware",
-    "networking": "Networking"
+    "networking": "Networking",
+    "other": "Other"
   }
 }
