@@ -7,6 +7,10 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: "en",
 
+  // Keep the current/default locale stable on refresh instead of
+  // auto-switching from the browser's preferred language.
+  localeDetection: false,
+
   // Only show locale prefix for non-default locales
   localePrefix: "as-needed",
 });
