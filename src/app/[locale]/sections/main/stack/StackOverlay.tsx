@@ -73,18 +73,6 @@ export function StackOverlay({ item, layoutId, onClose }: StackOverlayProps) {
                   ))}
                 </ul>
               )}
-              {descriptionPoints.length > 0 && (
-                <ul className="mx-auto max-w-xl space-y-2 text-start text-sm leading-relaxed text-muted-foreground">
-                  {descriptionPoints.map((point, index) => (
-                    <li
-                      key={`${item.id}-point-${index}`}
-                      className="list-disc ms-5"
-                    >
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              )}
             </motion.div>
           </div>
         </div>
