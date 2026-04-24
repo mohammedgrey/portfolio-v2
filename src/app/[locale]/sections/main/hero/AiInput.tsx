@@ -31,9 +31,14 @@ const AiInput: FC = () => {
       <div className="relative w-full">
         <AnimatePresence initial={false}>
           {!focused && (
-            <motion.div layoutId="ai-input" className="z-20" key="input-alone">
+            <motion.div
+              layoutId="ai-input"
+              layout="position"
+              className="z-20"
+              key="input-alone"
+            >
               <Input
-                className="h-10!"
+                className="h-10! border-input/80 bg-background/60 backdrop-blur-xl shadow-sm"
                 ref={inputRef}
                 onFocus={handleFocus}
                 placeholder={t("hero.inputPlaceholder")}

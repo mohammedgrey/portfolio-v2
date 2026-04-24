@@ -30,6 +30,8 @@ export type MultiSelectProps = {
   ref?: React.Ref<HTMLInputElement>;
   clearable?: boolean;
   renderOption?: (option: SelectOption) => React.ReactNode;
+  renderChip?: (option: SelectOption) => React.ReactNode;
+  icon?: React.ReactNode;
 };
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
@@ -41,6 +43,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   "aria-invalid": ariaInvalid = false,
   clearable = false,
   renderOption,
+  renderChip,
+  icon,
   ref,
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -109,6 +113,11 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           "aria-invalid:ring-destructive/10 dark:aria-invalid:ring-destructive/30 aria-invalid:border-destructive",
         )}
       >
+        {icon && (
+          <div className="flex shrink-0 items-center ps-2 text-muted-foreground">
+            {icon}
+          </div>
+        )}
         <div
           className={cn(
             selected?.length > 0 && "ms-2",
@@ -117,9 +126,12 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         >
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1">
             {selected.map((option) => {
+              const matchedOption = options.find((o) => o.value === option);
               return (
                 <Badge className="" key={option + ""} variant="outline">
-                  {options.find((o) => o.value === option)?.label ?? ""}
+                  {matchedOption && renderChip
+                    ? renderChip(matchedOption)
+                    : (matchedOption?.label ?? "")}
                   <button
                     type="button"
                     className="ms-1 cursor-pointer rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"

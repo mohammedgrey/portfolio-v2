@@ -32,6 +32,7 @@ export type ProjectType = {
   details: {
     PDF?: string;
     API?: string;
+    client?: string;
     android?: string;
     ios?: string;
     brief: string;

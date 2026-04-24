@@ -48,11 +48,11 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full flex flex-col rounded-md border border-input bg-transparent transition-[color,box-shadow] focus-within:border-ring  px-3 py-3 text-sm"
+      className="w-full flex flex-col rounded-md border border-input bg-background/40 dark:bg-input/20 backdrop-blur-md px-3 py-3 text-sm transition-[color,box-shadow]"
     >
       <div className="flex">
         <TextareaAutosize
-          autoFocus
+          autoFocus={!disabled}
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -67,7 +67,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           }
           className={cn(
             "grow",
-            "resize-none bg-transparent placeholder:text-muted-foreground text-foreground",
+            "resize-none bg-transparent text-base placeholder:text-muted-foreground text-foreground md:text-sm",
             "outline-none border-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50",
             "dark:bg-transparent",
           )}

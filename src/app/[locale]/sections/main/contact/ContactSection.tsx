@@ -12,7 +12,7 @@ const ContactSection: FC = () => {
 
   return (
     <AppSection id="contact" className="overflow-x-hidden py-20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         {/* Section Title */}
         <div className="text-center mb-12">
           <AppSection.Title className="text-4xl mb-4">

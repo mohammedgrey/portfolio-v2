@@ -7,7 +7,6 @@ import { StackItem } from "@/types/common";
 import { Center } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { AnimatePresence, motion } from "framer-motion";
-import { Star } from "lucide-react";
 import { useState, type FC } from "react";
 import { StackIcon3D } from "./StackIcon3D";
 import { StackOverlay } from "./StackOverlay";
@@ -22,7 +21,7 @@ const StackSection: FC = () => {
 
   return (
     <>
-      <div className="text-center mb-8">
+      <div className="text-center mb-8 px-4 sm:px-6">
         <AppSection.Title className="mb-4">{t("stack.title")}</AppSection.Title>
         <AppSection.Description className="text-lg max-w-2xl mx-auto">
           {t("stack.description")}
@@ -38,7 +37,7 @@ const StackSection: FC = () => {
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
                 whileTap={{ scale: 0.995 }}
-                className="group relative isolate cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card text-start transition-colors duration-200 focus-visible:outline-none"
+                className="group relative isolate cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card transition-colors duration-200 focus-visible:outline-none"
               >
                 <div
                   className="pointer-events-none absolute inset-0 z-0 opacity-70"
@@ -82,14 +81,10 @@ const StackSection: FC = () => {
                     </Center>
                   </Canvas>
                 </motion.div>
-                <div className="relative z-10 flex items-center justify-between px-3 pb-3 pt-1 sm:px-4">
-                  <h3 className="text-sm font-semibold text-foreground sm:text-base">
+                <div className="relative z-10 px-3 pb-3 pt-2 sm:px-4">
+                  <h3 className="text-center text-sm font-semibold text-foreground sm:text-base">
                     {item.title}
                   </h3>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-1 text-[10px] font-medium text-muted-foreground sm:text-xs">
-                    <Star className="h-3 w-3 fill-yellow-500 text-yellow-500 dark:fill-yellow-400 dark:text-yellow-400" />
-                    {item.expertise}/5
-                  </span>
                 </div>
               </motion.button>
             );

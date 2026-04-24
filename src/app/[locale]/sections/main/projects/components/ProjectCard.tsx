@@ -2,8 +2,10 @@
 
 import { FullscreenOverlay } from "@/components/common/FullScreenOverlay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import useDomainIcons from "@/hooks/logic/useDomainIcons";
 import { cn } from "@/lib/utils";
 import { ProjectType } from "@/types/common";
+import { ProjectTypeEnum } from "@/types/enums";
 import { ExternalLink } from "lucide-react";
 import { FC, useState } from "react";
 import { TechChip, TypeBadge, YearChip } from "./ProjectBadges";
@@ -17,6 +19,11 @@ interface ProjectCardProps {
 const ProjectCard: FC<ProjectCardProps> = ({ project, className }) => {
   // Destructure non-details fields
   const { title, type, link, year, details } = project;
+  const domainIcons = useDomainIcons();
+  const briefPreview = details?.brief
+    ?.split("\n")
+    .map((line) => line.trim())
+    .find((line) => line && !line.startsWith("- "));
   const [overlayOpen, setOverlayOpen] = useState(false);
   const closeOverlay = () => setOverlayOpen(false);
   const openOverlay = () => setOverlayOpen(true);
@@ -71,13 +78,16 @@ const ProjectCard: FC<ProjectCardProps> = ({ project, className }) => {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap mb-3">
-            <TypeBadge label={type.label} />
+            <TypeBadge
+              label={type.label}
+              icon={domainIcons[type.value as ProjectTypeEnum]}
+            />
             <YearChip year={year} />
           </div>
 
-          {details?.brief && (
+          {briefPreview && (
             <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-              {details.brief}
+              {briefPreview}
             </p>
           )}
         </CardHeader>

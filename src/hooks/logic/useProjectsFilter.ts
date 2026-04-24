@@ -44,15 +44,46 @@ export const useProjectsFilter = (
   }, [projects]);
 
   const techOptions = useMemo(() => {
-    const uniqueTechs = Array.from(
-      new Set(projects.flatMap((p) => p.details.techs.map((t) => t.value))),
+    const allTechs = projects.flatMap((p) => p.details.techs);
+    const countByValue = allTechs.reduce<Record<string, number>>((acc, t) => {
+      acc[t.value as string] = (acc[t.value as string] ?? 0) + 1;
+      return acc;
+    }, {});
+    const firstSeenIndexByValue = allTechs.reduce<Record<string, number>>(
+      (acc, t, idx) => {
+        const value = t.value as string;
+        if (acc[value] === undefined) {
+          acc[value] = idx;
+        }
+        return acc;
+      },
+      {},
     );
-    return uniqueTechs.map((value) => {
-      const tech = projects
-        .flatMap((p) => p.details.techs)
-        .find((t) => t.value === value);
-      return { value, label: tech!.label };
-    });
+    const uniqueTechs = Array.from(new Set(allTechs.map((t) => t.value)));
+    return uniqueTechs
+      .filter((value) => (countByValue[value as string] ?? 0) >= 2)
+      .sort((a, b) => {
+        const countDiff =
+          (countByValue[b as string] ?? 0) - (countByValue[a as string] ?? 0);
+        if (countDiff !== 0) {
+          return countDiff;
+        }
+
+        const firstSeenDiff =
+          (firstSeenIndexByValue[a as string] ?? Number.MAX_SAFE_INTEGER) -
+          (firstSeenIndexByValue[b as string] ?? Number.MAX_SAFE_INTEGER);
+        if (firstSeenDiff !== 0) {
+          return firstSeenDiff;
+        }
+
+        const labelA = allTechs.find((t) => t.value === a)?.label ?? "";
+        const labelB = allTechs.find((t) => t.value === b)?.label ?? "";
+        return labelA.localeCompare(labelB);
+      })
+      .map((value) => {
+        const tech = allTechs.find((t) => t.value === value);
+        return { value, label: tech!.label };
+      });
   }, [projects]);
 
   const yearOptions = useMemo(() => {

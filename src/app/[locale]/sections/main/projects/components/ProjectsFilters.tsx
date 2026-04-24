@@ -1,5 +1,6 @@
 "use client";
 
+import { CalendarIcon } from "@/assets/icons";
 import MultiSelect, {
   SelectOption,
   SelectOptionValue,
@@ -7,6 +8,7 @@ import MultiSelect, {
 import useDomainIcons from "@/hooks/logic/useDomainIcons";
 import { useAppTranslations } from "@/i18n";
 import { ProjectTypeEnum } from "@/types/enums";
+import { Code2, Layers } from "lucide-react";
 import { FC } from "react";
 
 interface ProjectsFiltersProps {
@@ -50,9 +52,18 @@ const ProjectsFilters: FC<ProjectsFiltersProps> = ({
         onChange={setSelectedTypes}
         placeholder={t("projects.filters.type")}
         clearable
+        icon={<Layers className="h-4 w-4" />}
         renderOption={({ label, value }) => (
           <div className="flex items-center gap-2">
             {domainIcons[value as ProjectTypeEnum]} {label}
+          </div>
+        )}
+        renderChip={({ label, value }) => (
+          <div className="flex items-center gap-1.5">
+            <span className="[&>svg]:h-3 [&>svg]:w-3 shrink-0">
+              {domainIcons[value as ProjectTypeEnum]}
+            </span>
+            {label}
           </div>
         )}
       />
@@ -62,6 +73,7 @@ const ProjectsFilters: FC<ProjectsFiltersProps> = ({
         onChange={setSelectedTechs}
         placeholder={t("projects.filters.tech")}
         clearable
+        icon={<Code2 className="h-4 w-4" />}
       />
       <MultiSelect
         options={localizedYearOptions}
@@ -69,6 +81,7 @@ const ProjectsFilters: FC<ProjectsFiltersProps> = ({
         onChange={setSelectedYears}
         placeholder={t("projects.filters.year")}
         clearable
+        icon={<CalendarIcon className="h-4 w-4" />}
       />
     </div>
   );

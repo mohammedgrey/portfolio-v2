@@ -11,5 +11,5 @@ export const personalInfo = {
     postalCode: "12284",
     fullAddress: "Riyadh, Saudi Arabia",
   },
-  profileImage: "/assets/images/profile.jpg",
+  profileImage: "/assets/images/profile.png",
 };

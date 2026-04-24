@@ -22,11 +22,11 @@
     "hero": {
       "title": "Hi, I'm Mohammed 👋",
       "description": "Senior Software Engineer & Full Stack Developer. Front-end specialist with deep expertise in React and modern web technologies.",
-      "inputPlaceholder": "Ask my AI assistant about my projects, experience, or skills..."
+      "inputPlaceholder": "Ask my AI assistant about what you want..."
     },
     "stack": {
       "title": "Tech Stack",
-      "description": "Technologies I use to design, build, and ship reliable products. Select any item to learn how I apply it in real projects.",
+      "description": "Some of the technologies I use most often to design, build, and ship reliable products. Select any item to see how I apply it in real projects.",
       "expertiseLevel": "Expertise Level",
       "expertiseLabels": {
         "level1": "Beginner",
@@ -36,40 +36,40 @@
         "level5": "Master"
       },
       "react": {
-        "description": "My core framework for building maintainable, production-grade interfaces. I use React extensively across enterprise dashboards and customer-facing applications."
+        "description": "React is one of my core technologies for building maintainable, production-ready interfaces at scale.\n- Build reusable component systems with clean, scalable architecture and clear separation of concerns.\n- Create reusable custom hooks for shared business logic, state orchestration, and side-effect handling.\n- Consume generated API hooks/functions from Swagger/OpenAPI clients to speed up UI integration and reduce boilerplate.\n- Use performance-focused patterns like virtualization, memoization, and render optimization in data-heavy screens.\n- Develop generic, maintainable form workflows for large and complex forms.\n- Apply accessibility-first patterns for keyboard support, focus management, and semantic UI behavior.\n- Structure UI features to remain easy to test, refactor, and evolve over time."
       },
       "nextjs": {
-        "description": "My go-to framework for full-stack React applications. I use SSR, SSG, server actions, API routes, and performance optimization patterns in production environments."
+        "description": "Next.js is my default framework when I need full-stack React delivery with strong performance and SEO.\n- Architect full-stack applications with App Router, nested layouts, and clear server/client boundaries.\n- Apply SSR, SSG, and caching strategies to improve performance, SEO, and perceived load time.\n- Build server actions, route handlers, and secure API flows for production features.\n- Optimize loading and rendering with streaming, code splitting, and route-level tuning.\n- Implement localization, metadata strategy, and sitemap/robots setup for discoverability.\n- Enforce maintainable project structure for long-term team scalability."
       },
       "typescript": {
-        "description": "I build all modern projects with TypeScript to improve code quality, maintainability, and team velocity through strong type-safe architecture."
+        "description": "TypeScript is essential in my projects for maintainability, safety, and long-term scalability.\n- Generate strongly typed API models and function contracts from Swagger/OpenAPI specs to keep backend/frontend contracts aligned.\n- Design custom utility types and generic abstractions for scalable APIs and reusable modules.\n- Enforce safer domain models and contracts across frontend and backend layers.\n- Improve maintainability with strict typing for forms, data fetching, and state logic.\n- Reduce runtime issues by catching edge cases early during development.\n- Standardize shared types to keep feature teams aligned and reduce integration mistakes.\n- Use type-driven refactoring to evolve systems confidently with fewer regressions."
       },
       "node": {
-        "description": "Experienced in building scalable backend services, REST APIs, and real-time applications with Node.js, Express, and NestJS."
+        "description": "Node.js powers the backend services and integrations I build for modern product teams.\n- Build scalable backend services and modular API architectures.\n- Develop REST and real-time endpoints using Express and NestJS patterns.\n- Implement validation, authentication, and structured error handling for reliability.\n- Integrate background jobs and service-to-service workflows for production systems.\n- Design database access layers and query flows with clear domain boundaries.\n- Improve observability with structured logging and practical monitoring hooks."
       },
       "docker": {
-        "description": "I use Docker to standardize development and deployment workflows, including multi-service environments with Docker Compose."
+        "description": "Docker helps me keep development and deployment environments consistent across teams and projects.\n- Standardize local and CI environments to reduce machine-specific issues.\n- Use Docker Compose for multi-service setups across app, database, and supporting tools.\n- Create lean images and predictable runtime configurations for deployments.\n- Improve onboarding by providing consistent development containers and scripts.\n- Reproduce production-like behavior early to reduce release surprises.\n- Streamline team collaboration with shared container-based workflows."
       },
       "ai": {
-        "description": "I integrate AI capabilities into products using modern APIs, practical prompt design, and evaluation-driven workflows to ship useful features faster."
+        "description": "I use AI as a force multiplier to accelerate delivery while preserving quality and engineering standards.\n- Use AI to boost development speed without compromising quality, architecture, or review standards.\n- Create practical prompt and instruction file patterns for repeatable engineering output.\n- Build reusable skills/workflows used across multiple projects for maintainability.\n- Integrate AI features with evaluation-driven checks before shipping to production.\n- Apply AI assistance for refactoring, test drafting, and documentation while keeping human validation in control.\n- Treat AI outputs as a productivity layer, not a substitute for engineering judgment."
       },
       "flutter": {
-        "description": "Hands-on experience building cross-platform mobile applications for iOS and Android with production-focused Flutter architecture."
+        "description": "Flutter is my go-to when I need fast, consistent cross-platform mobile delivery.\n- Build cross-platform mobile apps for iOS and Android from a shared codebase.\n- Structure apps with maintainable state and feature modules for long-term growth.\n- Integrate APIs, form flows, and platform capabilities with production-ready practices.\n- Optimize UI responsiveness and release workflows for stable mobile delivery.\n- Build reusable UI primitives to keep product behavior consistent across screens.\n- Maintain clean architecture boundaries for easier testing and long-term maintainability."
       },
       "vue": {
-        "description": "Experience building applications with Vue 3, the Composition API, and scalable state-management patterns."
+        "description": "I use Vue for teams and products that benefit from its lightweight, composable architecture.\n- Build Vue 3 applications with the Composition API and reusable composables.\n- Organize feature modules with clean state management and predictable data flow.\n- Develop maintainable UI systems for dashboards and business-facing tools.\n- Improve developer experience with typed patterns and scalable project structure.\n- Design components and composables that keep logic modular and easy to reuse.\n- Maintain clear conventions that support faster onboarding and smoother collaboration."
       }
     },
     "projects": {
-      "title": "Featured Projects",
-      "description": "Production applications delivered across multiple industries, with a focus on performance, usability, and business impact.",
+      "title": "Projects",
+      "description": "Some of the projects I have worked on, delivered across multiple industries with a focus on performance, usability, and business impact.",
       "currentYear": "Current Year",
       "showMore": "Show More",
       "showLess": "Show Less",
       "filters": {
-        "type": "Filter by domain",
-        "tech": "Filter by technology",
-        "year": "Filter by year",
+        "type": "Filter by Industry",
+        "tech": "Filter by Technology",
+        "year": "Filter by Year",
         "other": "Other"
       },
       "empty": {
@@ -155,7 +155,14 @@
     "placeholders": {
       "text": "What do you want to know?",
       "listening": "I'm listening...",
-      "loading": "I'm generating an answer..."
+      "loading": "Okay, let me see...",
+      "loadingAlternatives": [
+        "Okay, let me see...",
+        "Hmm wait, I am getting an answer...",
+        "Just a second...",
+        "Let me check that...",
+        "Hold on, I am on it..."
+      ]
     },
     "actions": {
       "tryAgain": "Try Again",
@@ -178,7 +185,7 @@
         "message": "What are your main technical skills and areas of expertise?"
       },
       "projects": {
-        "title": "Featured Projects",
+        "title": "Projects",
         "description": "Explore the projects I've built and contributed to",
         "message": "Show me some of your most interesting projects"
       }
@@ -235,6 +242,11 @@
   },
   "Projects": {
     "briefs": {
+      "cnhiProjects": "Developed a set of Council of National Health Insurance (CNHI) services within the Seha ecosystem and led the team responsible for delivering them.\n- Provider Portal: Connected healthcare providers (hospitals, clinics, pharmacies, and others) with CNHI for registration, join requests, data updates, application tracking, and officer-side review and onboarding management.\n- Eligibility Engine: Enabled real-time coverage verification using ID number and date of birth, including specialized checks such as traffic-accident eligibility.\n- Referral Distribution: Digitized referral distribution, acceptance, validation, assignment confirmation, and patient-arrival tracking across TPAs and healthcare facilities using a role-based workflow.\n- Health Benefit Packages (HBP): Provided a governed workspace to browse, edit, clone, and assign insurance benefit packages to specific beneficiary segments.\n- Shared Common Components: Developed reusable components used across all CNHI projects to improve consistency and maintainability.\n- Internal Enablement Tools: Built tools that facilitated testing and streamlined recurring workflows for common operational tasks.",
+      "digitalTwin": "Contributed to building the Digital Twin feature inside Sehaty (صحتي), Saudi Arabia's national citizen health platform. The feature constructs a virtual health model of the user derived from their personal data, medical history, and clinical records, estimating biological age, assessing obesity levels, surfacing diagnoses, and generating personalized health insights to empower users with a deeper understanding of their own health.",
+      "capacityDemand": "Contributed to building the Capacity and Demand application on Hulool, a healthcare planning and decision-support platform designed to help leaders compare current service supply across regions (hospitals, PHCs, OPDs, urgent care, and halfway homes) against population and demand drivers such as demographics, tourism, referral flows, and health statistics. It supports identifying service gaps, prioritizing investment areas, tracking future projects and their expected impact, and enabling evidence-based decisions for resource allocation, expansion planning, and operational optimization.",
+      "openData": "Contributed to the Open Data platform for the Saudi Ministry of Health, with a primary focus on rebuilding the admin panel to improve usability, structure, and maintainability. The work supported more efficient content and dataset management workflows and helped make public health data publishing more consistent and reliable.",
+      "rzerve": "Contributed to Rzerve, a booking SaaS product focused on helping businesses manage reservations and booking operations in a streamlined, scalable workflow. Contributed to core product capabilities using Vue, Nuxt, and SurrealDB, and also took part in managerial responsibilities and business decisions that shaped execution priorities and product direction.",
       "masroof": "Architected and developed a comprehensive digital platform for school canteen management and digitization that connects suppliers and specialists. Features include a school management dashboard, parent mobile application, and electronic bracelet for students. Successfully transformed the entire operational process by streamlining purchase and payment workflows while reducing paper-based cash transactions, contributing to the creation of smart and secure school environments.",
       "ktMessenger": "Architected a secure, enterprise-grade messaging platform with end-to-end encryption protocols and rich multimedia support. Implemented advanced security features ensuring complete message privacy while maintaining seamless real-time communication and media exchange capabilities.",
       "corners": "Contributed to a high-traffic food delivery platform by developing cross-platform UI components for iOS and Android. Led critical refactoring initiatives to improve code maintainability and resolved complex bugs, enhancing overall application stability and user experience.",
@@ -254,19 +266,13 @@
     }
   },
   "Domains": {
-    "education": "Education",
-    "messaging": "Messaging",
-    "delivery": "Delivery",
-    "enterprise": "Enterprise",
-    "hospitality": "Hospitality",
-    "ecommerce": "E-Commerce",
-    "logistics": "Logistics",
-    "search": "Search",
-    "entertainment": "Entertainment",
-    "gaming": "Gaming",
-    "aiMl": "AI/ML",
-    "hardware": "Hardware",
-    "networking": "Networking",
+    "ecommerce": "E-Commerce & Logistics",
+    "healthtech": "Healthcare (HealthTech)",
+    "edtech": "Education (EdTech)",
+    "hospitality": "Services & Hospitality",
+    "entertainment": "Entertainment & Media",
+    "aiMl": "AI & Machine Learning",
+    "engineering": "Engineering & Research",
     "other": "Other"
   }
 }

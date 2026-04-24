@@ -79,7 +79,7 @@ export const ChatInterface = ({ inputLayoutId }: ChatInterfaceProps) => {
       <div
         className={controlsContainerClass}
         style={{
-          paddingBottom: `calc(max(env(safe-area-inset-bottom), 0.5rem) + ${keyboardInset}px)`,
+          paddingBottom: `calc(max(env(safe-area-inset-bottom), 0.5rem) + ${isRateLimited ? 0 : keyboardInset}px)`,
         }}
       >
         <motion.div

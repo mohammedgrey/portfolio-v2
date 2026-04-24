@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useProjectsFilter } from "@/hooks/logic/useProjectsFilter";
 import { useAppTranslations } from "@/i18n";
+import { cn } from "@/lib/utils";
 import { ProjectType } from "@/types/common";
 import { SearchX } from "lucide-react";
 import { FC, useState } from "react";
@@ -28,6 +29,8 @@ const ProjectsGrid: FC<ProjectsGridProps> = ({
   } = useProjectsFilter(projects);
 
   const hasNoProjects = filteredProjects.length === 0;
+  const hasMoreProjects = filteredProjects.length > initialCount;
+  const isCollapsed = !showAll && hasMoreProjects;
 
   const handleEmailDirectly = () => {
     const contactSection = document.getElementById("contact");
@@ -84,18 +87,32 @@ const ProjectsGrid: FC<ProjectsGridProps> = ({
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredProjects.map((project, idx) => {
-            const isVisible = showAll || idx < initialCount;
-            return (
-              <div key={project.id} className={isVisible ? "" : "hidden"}>
+        <div
+          className={cn(
+            "relative overflow-hidden transition-[max-height] duration-500",
+            isCollapsed && "max-h-320 sm:max-h-248 lg:max-h-168",
+          )}
+          style={
+            isCollapsed
+              ? {
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 0%, black 72%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to bottom, black 0%, black 72%, transparent 100%)",
+                }
+              : undefined
+          }
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredProjects.map((project) => (
+              <div key={project.id}>
                 <ProjectCard project={project} />
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       )}
-      {!hasNoProjects && filteredProjects.length > initialCount && (
+      {!hasNoProjects && hasMoreProjects && (
         <div className="flex justify-center mt-8">
           <Button variant="outline" onClick={() => setShowAll((prev) => !prev)}>
             {showAll ? t("projects.showLess") : t("projects.showMore")}

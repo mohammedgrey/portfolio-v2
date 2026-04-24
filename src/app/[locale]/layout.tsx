@@ -7,6 +7,7 @@ import PrimaryFaviconSync from "@/components/wrappers/PrimaryFaviconSync";
 import ScrollToTopOnReload from "@/components/wrappers/ScrollToTopOnReload";
 import StoreProvider from "@/components/wrappers/StoreProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
+import { personalInfo } from "@/data/personalInfo";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -56,6 +57,7 @@ export async function generateMetadata({
     .split(",")
     .map((keyword) => keyword.trim())
     .filter(Boolean);
+  const previewImagePath = personalInfo.profileImage;
 
   return {
     title: t("title"),
@@ -78,12 +80,21 @@ export async function generateMetadata({
       description: t("description"),
       siteName: "Mohammed Dawood Portfolio",
       locale,
+      images: [
+        {
+          url: previewImagePath,
+          width: 1200,
+          height: 630,
+          alt: t("title"),
+        },
+      ],
       ...(canonicalUrl ? { url: canonicalUrl } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
+      images: [previewImagePath],
     },
     ...(baseUrl
       ? {
