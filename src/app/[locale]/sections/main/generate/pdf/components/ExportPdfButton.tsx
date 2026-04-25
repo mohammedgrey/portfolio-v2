@@ -29,7 +29,7 @@ const ExportPdfButton: FC<ExportPdfButtonProps> = ({ config }) => {
     <PDFDownloadLink
       key={configKey}
       document={document}
-      fileName="Resume — Mohammed Dawood.pdf"
+      fileName="Resume • Mohammed Dawood.pdf"
     >
       {({ loading }) => (
         <Button className="w-full" disabled={loading}>
