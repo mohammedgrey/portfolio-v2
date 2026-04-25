@@ -21,7 +21,7 @@
     },
     "hero": {
       "title": "Hi, I'm Mohammed 👋",
-      "description": "Senior Software Engineer & Full Stack Developer. Front-end specialist with deep expertise in React and modern web technologies.",
+      "description": "Senior Software Engineer specialized in frontend development using React, Next.js, and TypeScript, with full-stack capabilities, strong product design awareness, and practical AI-powered delivery workflows.",
       "inputPlaceholder": "Ask my AI assistant about what you want..."
     },
     "stack": {
@@ -115,7 +115,7 @@
   },
   "Metadata": {
     "title": "Mohammed Dawood | Senior Software Engineer | Frontend & React Specialist",
-    "description": "Senior Software Engineer specializing in React, Next.js, and TypeScript, with strong product design awareness and practical AI-powered delivery workflows.",
+    "description": "Senior Software Engineer specialized in frontend development using React, Next.js, and TypeScript, with full-stack capabilities, strong product design awareness, and practical AI-powered delivery workflows.",
     "keywords": "Mohammed Dawood, Senior Software Engineer, React Developer, Next.js Portfolio, TypeScript, Full-Stack Developer, Frontend Engineer, Product Engineering, AI Integration"
   },
   "HeaderText": {
@@ -157,7 +157,7 @@
     "placeholders": {
       "text": "What do you want to know?",
       "listening": "I'm listening...",
-      "loading": "Okay, let me see...",
+      "loading": "Just a second...",
       "loadingAlternatives": [
         "Okay, let me see...",
         "Hmm wait, I am getting an answer...",
