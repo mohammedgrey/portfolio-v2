@@ -1,11 +1,13 @@
 "use client";
 
 import AppSection from "@/components/common/AppSection";
+import { Button } from "@/components/ui/button";
 import { WhenHydrated } from "@/components/wrappers/WhenHydrated";
 import { useAppTranslations } from "@/i18n";
+import { isMobileUserAgent } from "@/lib/utils";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Circle } from "lucide-react";
-import { type FC, useState } from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 import { CookiesProvider } from "react-cookie";
 import ExportPdfButton from "./pdf/components/ExportPdfButton";
 import PdfDocument from "./pdf/PdfDocument";
@@ -19,6 +21,18 @@ const GenerateSection: FC = () => {
     showEducation: true,
     showInterests: true,
   });
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+  const pdfViewerRef = useRef<HTMLIFrameElement | null>(null);
+
+  useEffect(() => {
+    setIsMobileDevice(isMobileUserAgent(navigator.userAgent));
+  }, []);
+
+  const handleOpenFullPreview = () => {
+    const viewerSrc = pdfViewerRef.current?.src;
+    if (!viewerSrc) return;
+    window.open(viewerSrc, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <WhenHydrated>
@@ -49,7 +63,17 @@ const GenerateSection: FC = () => {
                 {t("generate.livePreview")}
               </h3>
             </div>
+            {isMobileDevice ? (
+              <Button
+                className="absolute bottom-2 right-2 z-10"
+                onClick={handleOpenFullPreview}
+                type="button"
+              >
+                {t("generate.openFullPreview")}
+              </Button>
+            ) : null}
             <PDFViewer
+              innerRef={pdfViewerRef}
               key={JSON.stringify(config)}
               className="rounded-md w-full border shadow-sm"
               height={700}

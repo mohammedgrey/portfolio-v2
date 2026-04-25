@@ -7,7 +7,6 @@ import PrimaryFaviconSync from "@/components/wrappers/PrimaryFaviconSync";
 import ScrollToTopOnReload from "@/components/wrappers/ScrollToTopOnReload";
 import StoreProvider from "@/components/wrappers/StoreProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
-import { personalInfo } from "@/data/personalInfo";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -39,12 +38,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getAppTranslations({ locale, namespace: "Metadata" });
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const baseUrl = siteUrl ? new URL(siteUrl) : undefined;
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio.mohammeddawood.com";
+  const baseUrl = new URL(siteUrl);
   const canonicalPath = locale === routing.defaultLocale ? "/" : `/${locale}`;
-  const canonicalUrl = baseUrl
-    ? new URL(canonicalPath, baseUrl).toString()
-    : undefined;
+  const canonicalUrl = new URL(canonicalPath, baseUrl).toString();
 
   const languages = Object.fromEntries(
     routing.locales.map((localeItem) => [
@@ -57,7 +55,10 @@ export async function generateMetadata({
     .split(",")
     .map((keyword) => keyword.trim())
     .filter(Boolean);
-  const previewImagePath = personalInfo.profileImage;
+  const previewImageUrl = new URL(
+    "/assets/images/profile.jpg",
+    baseUrl,
+  ).toString();
 
   return {
     title: t("title"),
@@ -82,29 +83,25 @@ export async function generateMetadata({
       locale,
       images: [
         {
-          url: previewImagePath,
+          url: previewImageUrl,
           width: 1200,
           height: 630,
           alt: t("title"),
         },
       ],
-      ...(canonicalUrl ? { url: canonicalUrl } : {}),
+      url: canonicalUrl,
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: [previewImagePath],
+      images: [previewImageUrl],
     },
-    ...(baseUrl
-      ? {
-          metadataBase: baseUrl,
-          alternates: {
-            canonical: canonicalPath,
-            languages,
-          },
-        }
-      : {}),
+    metadataBase: baseUrl,
+    alternates: {
+      canonical: canonicalPath,
+      languages,
+    },
   };
 }
 

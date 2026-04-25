@@ -24,7 +24,6 @@ const PdfSkillsGrid: FC<PdfSkillsGridProps> = ({
             ...styles.column,
             gap: 6,
             width: "100%",
-            backgroundColor: colors.card,
             border: `0.6px solid ${colors.border}`,
             borderRadius: 6,
             paddingHorizontal: 8,

@@ -82,7 +82,7 @@ const usePdfStyles = () => {
     },
     footer: {
       position: "absolute",
-      bottom: 8,
+      bottom: 14,
       left: 16,
       right: 16,
     },

@@ -1,4 +1,4 @@
-import { Text, View } from "@react-pdf/renderer";
+import { Image, Text, View } from "@react-pdf/renderer";
 import { type FC, type ReactNode } from "react";
 import type { UsePdfStylesReturn } from "../hooks/usePdfStyles";
 
@@ -6,9 +6,15 @@ interface PdfSectionProps {
   title: string;
   children: ReactNode;
   styleUtils: UsePdfStylesReturn;
+  iconSrc?: string;
 }
 
-const PdfSection: FC<PdfSectionProps> = ({ title, children, styleUtils }) => {
+const PdfSection: FC<PdfSectionProps> = ({
+  title,
+  children,
+  styleUtils,
+  iconSrc,
+}) => {
   const { styles, colors, fontSizes, fontWeights } = styleUtils;
 
   return (
@@ -22,17 +28,25 @@ const PdfSection: FC<PdfSectionProps> = ({ title, children, styleUtils }) => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            ...styles.text,
-            fontSize: fontSizes.large,
-            fontWeight: fontWeights.semiBold,
-            color: colors.primary,
-            letterSpacing: 0.4,
-          }}
-        >
-          {title}
-        </Text>
+        <View style={{ ...styles.row, alignItems: "center", gap: 6 }}>
+          {iconSrc && (
+            <Image
+              src={iconSrc}
+              style={{ width: 11, height: 11, objectFit: "contain" }}
+            />
+          )}
+          <Text
+            style={{
+              ...styles.text,
+              fontSize: fontSizes.large,
+              fontWeight: fontWeights.semiBold,
+              color: colors.text.body,
+              letterSpacing: 0.4,
+            }}
+          >
+            {title}
+          </Text>
+        </View>
       </View>
 
       {/* Section Content */}

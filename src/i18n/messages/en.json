@@ -39,25 +39,25 @@
         "description": "React is one of my core technologies for building maintainable, production-ready interfaces at scale.\n- Build reusable component systems with clean, scalable architecture and clear separation of concerns.\n- Create reusable custom hooks for shared business logic, state orchestration, and side-effect handling.\n- Consume generated API hooks/functions from Swagger/OpenAPI clients to speed up UI integration and reduce boilerplate.\n- Use performance-focused patterns like virtualization, memoization, and render optimization in data-heavy screens.\n- Develop generic, maintainable form workflows for large and complex forms.\n- Apply accessibility-first patterns for keyboard support, focus management, and semantic UI behavior.\n- Structure UI features to remain easy to test, refactor, and evolve over time."
       },
       "nextjs": {
-        "description": "Next.js is my default framework when I need full-stack React delivery with strong performance and SEO.\n- Architect full-stack applications with App Router, nested layouts, and clear server/client boundaries.\n- Apply SSR, SSG, and caching strategies to improve performance, SEO, and perceived load time.\n- Build server actions, route handlers, and secure API flows for production features.\n- Optimize loading and rendering with streaming, code splitting, and route-level tuning.\n- Implement localization, metadata strategy, and sitemap/robots setup for discoverability.\n- Enforce maintainable project structure for long-term team scalability."
+        "description": "Next.js is my primary framework for full-stack React delivery with strong performance and SEO.\n- Architect full-stack applications with App Router, nested layouts, and clear server/client boundaries.\n- Apply SSR, SSG, and caching strategies to improve performance, SEO, and perceived load time.\n- Build server actions, route handlers, and secure API flows for production features.\n- Optimize loading and rendering with streaming, code splitting, and route-level tuning.\n- Implement localization, metadata strategy, and sitemap/robots setup for discoverability.\n- Enforce maintainable project structure for long-term team scalability."
       },
       "typescript": {
-        "description": "TypeScript is essential in my projects for maintainability, safety, and long-term scalability.\n- Generate strongly typed API models and function contracts from Swagger/OpenAPI specs to keep backend/frontend contracts aligned.\n- Design custom utility types and generic abstractions for scalable APIs and reusable modules.\n- Enforce safer domain models and contracts across frontend and backend layers.\n- Improve maintainability with strict typing for forms, data fetching, and state logic.\n- Reduce runtime issues by catching edge cases early during development.\n- Standardize shared types to keep feature teams aligned and reduce integration mistakes.\n- Use type-driven refactoring to evolve systems confidently with fewer regressions."
+        "description": "TypeScript is a key part of my projects for maintainability, safety, and long-term scalability.\n- Generate strongly typed API models and function contracts from Swagger/OpenAPI specs to keep backend/frontend contracts aligned.\n- Design custom utility types and generic abstractions for scalable APIs and reusable modules.\n- Enforce safer domain models and contracts across frontend and backend layers.\n- Improve maintainability with strict typing for forms, data fetching, and state logic.\n- Reduce runtime issues by catching edge cases early during development.\n- Standardize shared types to keep feature teams aligned and reduce integration mistakes.\n- Use type-driven refactoring to evolve systems confidently with fewer regressions."
       },
       "node": {
-        "description": "Node.js powers the backend services and integrations I build for modern product teams.\n- Build scalable backend services and modular API architectures.\n- Develop REST and real-time endpoints using Express and NestJS patterns.\n- Implement validation, authentication, and structured error handling for reliability.\n- Integrate background jobs and service-to-service workflows for production systems.\n- Design database access layers and query flows with clear domain boundaries.\n- Improve observability with structured logging and practical monitoring hooks."
+        "description": "Node.js is my foundation for building backend services and integrations for modern product teams.\n- Build scalable backend services and modular API architectures.\n- Develop REST and real-time endpoints using Express and NestJS patterns.\n- Implement validation, authentication, and structured error handling for reliability.\n- Integrate background jobs and service-to-service workflows for production systems.\n- Design database access layers and query flows with clear domain boundaries.\n- Improve observability with structured logging and practical monitoring hooks."
       },
       "docker": {
-        "description": "Docker helps me keep development and deployment environments consistent across teams and projects.\n- Standardize local and CI environments to reduce machine-specific issues.\n- Use Docker Compose for multi-service setups across app, database, and supporting tools.\n- Create lean images and predictable runtime configurations for deployments.\n- Improve onboarding by providing consistent development containers and scripts.\n- Reproduce production-like behavior early to reduce release surprises.\n- Streamline team collaboration with shared container-based workflows."
+        "description": "Docker has been essential for keeping development and deployment environments consistent across teams and projects.\n- Standardize local and CI environments to reduce machine-specific issues.\n- Use Docker Compose for multi-service setups across app, database, and supporting tools.\n- Create lean images and predictable runtime configurations for deployments.\n- Improve onboarding by providing consistent development containers and scripts.\n- Reproduce production-like behavior early to reduce release surprises.\n- Streamline team collaboration with shared container-based workflows."
       },
       "ai": {
         "description": "I use AI as a force multiplier to accelerate delivery while preserving quality and engineering standards.\n- Use AI to boost development speed without compromising quality, architecture, or review standards.\n- Create practical prompt and instruction file patterns for repeatable engineering output.\n- Build reusable skills/workflows used across multiple projects for maintainability.\n- Integrate AI features with evaluation-driven checks before shipping to production.\n- Apply AI assistance for refactoring, test drafting, and documentation while keeping human validation in control.\n- Treat AI outputs as a productivity layer, not a substitute for engineering judgment."
       },
       "flutter": {
-        "description": "Flutter is my go-to when I need fast, consistent cross-platform mobile delivery.\n- Build cross-platform mobile apps for iOS and Android from a shared codebase.\n- Structure apps with maintainable state and feature modules for long-term growth.\n- Integrate APIs, form flows, and platform capabilities with production-ready practices.\n- Optimize UI responsiveness and release workflows for stable mobile delivery.\n- Build reusable UI primitives to keep product behavior consistent across screens.\n- Maintain clean architecture boundaries for easier testing and long-term maintainability."
+        "description": "Flutter has been part of my stack for projects that needed fast, consistent cross-platform mobile delivery.\n- Build cross-platform mobile apps for iOS and Android from a shared codebase.\n- Structure apps with maintainable state and feature modules for long-term growth.\n- Integrate APIs, form flows, and platform capabilities with production-ready practices.\n- Optimize UI responsiveness and release workflows for stable mobile delivery.\n- Build reusable UI primitives to keep product behavior consistent across screens.\n- Maintain clean architecture boundaries for easier testing and long-term maintainability."
       },
       "vue": {
-        "description": "I use Vue for teams and products that benefit from its lightweight, composable architecture.\n- Build Vue 3 applications with the Composition API and reusable composables.\n- Organize feature modules with clean state management and predictable data flow.\n- Develop maintainable UI systems for dashboards and business-facing tools.\n- Improve developer experience with typed patterns and scalable project structure.\n- Design components and composables that keep logic modular and easy to reuse.\n- Maintain clear conventions that support faster onboarding and smoother collaboration."
+        "description": "Vue has been effective in teams and products that benefit from its lightweight, composable architecture.\n- Build Vue 3 applications with the Composition API and reusable composables.\n- Organize feature modules with clean state management and predictable data flow.\n- Develop maintainable UI systems for dashboards and business-facing tools.\n- Improve developer experience with typed patterns and scalable project structure.\n- Design components and composables that keep logic modular and easy to reuse.\n- Maintain clear conventions that support faster onboarding and smoother collaboration."
       }
     },
     "projects": {
@@ -81,10 +81,12 @@
       }
     },
     "generate": {
-      "title": "Resume Generator",
+      "title": "Resume",
       "description": "Generate an up-to-date resume with configurable sections tailored to your context.",
       "action": "Generate & Download",
       "livePreview": "Live Preview",
+      "openFullPreview": "Open full preview",
+      "generating": "Generating preview...",
       "updatingPreview": "Updating preview...",
       "updatingPreviewHint": "Regenerating the resume with your latest section choices.",
       "customize": "Customize Resume",
@@ -93,7 +95,7 @@
         "skills": "Skills",
         "experience": "Experience",
         "education": "Education",
-        "interests": "Interests & Languages",
+        "interests": "Interests & Activities",
         "projects": "Projects"
       }
     }

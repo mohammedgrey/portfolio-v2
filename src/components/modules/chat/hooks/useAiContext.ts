@@ -3,6 +3,7 @@ import { socials } from "@/data/socials";
 import useEducation from "@/hooks/data/useEducation";
 import useExperience from "@/hooks/data/useExperience";
 import useInterests from "@/hooks/data/useInterests";
+import useProjects from "@/hooks/data/useProjects";
 import useSkills from "@/hooks/data/useSkills";
 
 const formatMonthYear = (date: Date | null) => {
@@ -25,7 +26,8 @@ const useAiContext = () => {
   const { experienceItems } = useExperience();
   const { skillCategories } = useSkills();
   const { educationItems } = useEducation();
-  const { languages } = useInterests();
+  const { languages, interestItems } = useInterests();
+  const { projects } = useProjects();
   const now = new Date();
   const currentYear = now.getFullYear();
   const currentDate = now.toLocaleDateString("en-US", {
@@ -68,6 +70,50 @@ const useAiContext = () => {
     })
     .join("\n\n");
 
+  const projectsSortedByYear = [...projects].sort((a, b) => b.year - a.year);
+  const mainProjects = projectsSortedByYear.slice(0, 10);
+  const additionalProjects = projectsSortedByYear.slice(10);
+  const portfolioStartYear = Math.min(
+    ...projects.map((project) => project.year),
+  );
+  const portfolioEndYear = Math.max(...projects.map((project) => project.year));
+
+  const formatProjectLine = (
+    project: (typeof projectsSortedByYear)[number],
+    index?: number,
+  ) => {
+    const technologies = project.details.techs
+      .map((tech) => tech.label)
+      .join(", ");
+    const linkSuffix = project.link ? ` - ${project.link}` : "";
+
+    const prefix = typeof index === "number" ? `${index + 1}. ` : "";
+
+    return `${prefix}${project.title.toUpperCase()} (${project.year}) - ${project.details.brief.split("\n")[0]} - Built with ${technologies}${linkSuffix}`;
+  };
+
+  const projectPortfolioSummary = mainProjects
+    .map((project, index) => formatProjectLine(project, index))
+    .join("\n");
+
+  const additionalProjectsSummary = additionalProjects
+    .map((project) => `- ${formatProjectLine(project)}`)
+    .join("\n");
+
+  const interestsSummary = interestItems
+    .map((interest) => {
+      if (interest.date) {
+        return `- ${interest.title} (${formatMonthYear(interest.date)}): ${interest.description}`;
+      }
+
+      if (interest.startDate || interest.endDate) {
+        return `- ${interest.title} (${formatMonthYear(interest.startDate ?? null)} - ${formatMonthYear(interest.endDate ?? null)}): ${interest.description}`;
+      }
+
+      return `- ${interest.title}: ${interest.description}`;
+    })
+    .join("\n");
+
   const context = `You are supposed to provide helpful answers to the user's questions based on the context provided. The response should sound smart, human, and friendly. You are an AI to help the user know more info about Mohammed Dawood's portfolio and projects.
 If the user is asking a neutral question like "Hi", "Hmmm", "Hello", "How are you?", "Whats up?", "Hi there", "...etc. respond in a friendly manner and be proactive to mention the things you can help with.
 If the user is asking a totally unrelated question. You can respond with a funny and polite message saying you can only answer questions related to Mohammed Dawood's portfolio and projects. and make sure to add some humor to it as well as make some suggestions on what they can ask.
@@ -102,29 +148,13 @@ WORK EXPERIENCE:
 ${workExperienceSummary}
 
 INTERESTS & ACHIEVEMENTS:
-- STP Machathon-3 (March 2022): 2nd place winner in a computer vision competition
-- Cairo University Racing Team (September 2021 - May 2022): Autonomous Car Software Engineer, worked on perception module using Python & ROS
-- Hobbies: Calisthenics & Yoga, Coding & Design
+${interestsSummary}
 
-PROJECT PORTFOLIO (2020-2024):
-1. MASROOF (2024) - School management mobile app built with TypeScript and React Native
-2. KT MESSENGER (2023) - Encrypted chat app with multimedia sharing, built with TypeScript and React Native
-3. CORNERS (2023) - Food delivery mobile app for Android/iOS, built with TypeScript and React Native
-4. AT HOME DOC (2023) - Dynamic ERP system with microservices, built with React, Next.js, and GraphQL - https://ahd-dashboard.metadoc.care/
-5. MACQUEEN (2023) - Hotel booking app with mobile and web versions, built with React Native, React.js, and Next.js - Available on Google Play Store & App Store - https://www.macqueen.co/
-6. GEBHALY (2022) - E-commerce website with blog, offers, support pages, and Chrome extension, built with React.js and Next.js - https://www.gebhaly.com/
-7. EG PARCEL EXPRESS (2022) - International shipping website built from scratch with React.js and Next.js - https://www.egparcelexpress.com/
-8. LOOK ME UP (2021) - Google-like search engine with 5k indexed pages, team project with React.js, Spring Boot, and MongoDB - https://lookkmeup.web.app/
-9. IZI HANDMADE (2021) - Solo online store project with user roles and admin panel, built with React.js, Node.js, Express, MongoDB, and Firebase - https://izihandmade.web.app/
-10. EGYSCHOOLS (2020) - School management system for students, parents, and staff, built with React.js and Flutter (internship project at Datatec)
+PROJECT PORTFOLIO (${portfolioStartYear}-${portfolioEndYear}):
+${projectPortfolioSummary}
 
 ADDITIONAL PROJECTS:
-- SPOTIFY CLONE (2020): Music streaming app built with React.js, Redux, and React Router
-- SANTA GAME (2022): 3D game using OpenGL and C++ with ECS framework
-- GRADES AUTOFILLER (2022): Image processing project using Python, OpenCV, Flask, and React.js
-- HARVARD PROCESSOR (2021): RISC processor designed with VHDL
-- FONT CLASSIFIER (2020): Machine learning project using Python, Scikit-learn, and OpenCV
-- SRP (2022): Network protocol implementation using Omnet++ and C++
+${additionalProjectsSummary}
 `;
 
   return {

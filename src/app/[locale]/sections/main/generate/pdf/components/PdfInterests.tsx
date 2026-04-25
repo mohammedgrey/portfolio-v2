@@ -7,12 +7,14 @@ interface PdfInterestsProps {
   interests: InterestItem[];
   languages: Array<{ language: string; proficiency: string }>;
   styleUtils: UsePdfStylesReturn;
+  showLanguages?: boolean;
 }
 
 const PdfInterests: FC<PdfInterestsProps> = ({
   interests,
   languages,
   styleUtils,
+  showLanguages = true,
 }) => {
   const { styles, colors, fontSizes, fontWeights } = styleUtils;
 
@@ -45,7 +47,7 @@ const PdfInterests: FC<PdfInterestsProps> = ({
       ))}
 
       {/* Languages */}
-      {languages.length > 0 && (
+      {showLanguages && languages.length > 0 && (
         <View style={{ ...styles.row, gap: 8, marginTop: 4 }}>
           <Text
             style={{

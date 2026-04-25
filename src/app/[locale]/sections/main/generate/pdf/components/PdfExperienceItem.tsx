@@ -13,6 +13,7 @@ const PdfExperienceItem: FC<PdfExperienceItemProps> = ({
   styleUtils,
 }) => {
   const { styles, colors, fontSizes, fontWeights } = styleUtils;
+  const descriptionParagraphs = experience.description.split(/\n\s*\n/);
 
   const formatDate = (date: Date | null) => {
     if (!date) return "Present";
@@ -61,17 +62,41 @@ const PdfExperienceItem: FC<PdfExperienceItemProps> = ({
       </Text>
 
       {/* Description */}
-      <Text
-        style={{
-          ...styles.text,
-          fontSize: fontSizes.small,
-          color: colors.text.body,
-          lineHeight: 1.5,
-          marginTop: 2,
-        }}
-      >
-        {experience.description}
-      </Text>
+      <View style={{ ...styles.column, marginTop: 2 }}>
+        {descriptionParagraphs.map((paragraph, index) => (
+          <View
+            key={`${experience.id}-paragraph-${index}`}
+            style={{
+              ...styles.row,
+              alignItems: "flex-start",
+              gap: 4,
+              marginTop: 0,
+            }}
+          >
+            <Text
+              style={{
+                ...styles.text,
+                fontSize: fontSizes.small,
+                color: colors.text.body,
+                lineHeight: 1.3,
+              }}
+            >
+              •
+            </Text>
+            <Text
+              style={{
+                ...styles.text,
+                fontSize: fontSizes.small,
+                color: colors.text.body,
+                lineHeight: 1.3,
+                flex: 1,
+              }}
+            >
+              {paragraph}
+            </Text>
+          </View>
+        ))}
+      </View>
 
       {/* Technologies */}
       <View style={{ ...styles.row, gap: 4, flexWrap: "wrap", marginTop: 2 }}>

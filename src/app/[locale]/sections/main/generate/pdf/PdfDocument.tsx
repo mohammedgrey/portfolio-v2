@@ -52,4 +52,7 @@ Font.register({
   ],
 });
 
+// Prevent aggressive word hyphenation in PDF text blocks.
+Font.registerHyphenationCallback((word) => [word]);
+
 export default PdfDocument;

@@ -6,15 +6,16 @@ const useExperience = () => {
     {
       id: "lean",
       company: "Lean",
-      position: "Senior Software Engineer",
+      position: "Senior Software Engineer | Squad Lead",
       location: "Riyadh, Saudi Arabia",
       workType: WorkTypeEnum.OnSite,
       startDate: new Date(2025, 2), // March 2025
       endDate: null, // Present
       description:
-        "Contributing to multiple healthcare initiatives in Saudi Arabia, including MOH projects, Sehaty, Seha, and related digital health platforms.",
+        "Worked on multiple Saudi healthcare projects including MOH initiatives, Sehaty, and Seha platforms, using React, Next.js, TypeScript, SQL, and .NET.\n\nLed a squad responsible for multiple related projects, coordinating delivery, removing blockers, and aligning execution across team members.\n\nIntroduced lightweight tracking and documentation to improve visibility, collaboration, and streamline onboarding and handovers.\n\nConducted interviews for senior frontend roles and helped evaluate candidates for technical and team fit.",
       technologies: [
         { label: "React", value: TechEnum.React },
+        { label: "Next.js", value: TechEnum.NextJS },
         { label: "TypeScript", value: TechEnum.Typescript },
         { label: "SQL", value: TechEnum.SQL },
         { label: ".NET", value: TechEnum.DotNet },
@@ -29,7 +30,7 @@ const useExperience = () => {
       startDate: new Date(2024, 2), // March 2024
       endDate: new Date(2025, 1), // February 2025
       description:
-        "Built and maintained the Masroof school platform using React Native for mobile applications and React for the admin dashboard.",
+        "Built and maintained the Masroof school platform using React Native for mobile applications and React for the admin dashboard.\n\nWorked in an Agile environment with iterative planning and delivery.\n\nPerformed code reviews to maintain code quality, consistency, and engineering standards.",
       technologies: [
         { label: "React", value: TechEnum.React },
         { label: "React Native", value: TechEnum.ReactNative },
@@ -63,7 +64,7 @@ const useExperience = () => {
       startDate: new Date(2022, 9), // October 2022
       endDate: new Date(2023, 9), // October 2023
       description:
-        "Delivered features across multiple products, including a hotel booking web/mobile app (React Native, React, Next.js, Node.js), an ERP system (React, Next.js), a virtual office web app (Node.js, React), and the Corners food delivery app (React Native).",
+        "Worked on multiple products including a hotel booking platform, ERP system, virtual office web app, and Corners food delivery app, using React, React Native, Next.js, Node.js, MongoDB, and TypeScript.\n\nConducted interviews for frontend roles and contributed to hiring decisions.",
       technologies: [
         { label: "React Native", value: TechEnum.ReactNative },
         { label: "Next.js", value: TechEnum.NextJS },

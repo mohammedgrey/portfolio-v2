@@ -35,7 +35,9 @@ export enum ProjectNameEnum {
 export enum TechEnum {
   React = "React",
   ReactNative = "React Native",
+  Expo = "Expo",
   NextJS = "Next.js",
+  NestJS = "NestJS",
   Typescript = "Typescript",
   JavaScript = "Javascript",
   NodeJS = "Node.js",

@@ -20,14 +20,16 @@ const useSkills = () => {
     {
       id: "mobile",
       category: "Mobile",
-      skills: [TechEnum.ReactNative, TechEnum.Flutter],
+      skills: [TechEnum.ReactNative, TechEnum.Expo, TechEnum.Flutter],
     },
     {
       id: "backend",
       category: "Backend",
       skills: [
         TechEnum.NodeJS,
+        TechEnum.NestJS,
         TechEnum.NextJS,
+        TechEnum.DotNet,
         TechEnum.MongoDB,
         TechEnum.SQL,
         TechEnum.Python,

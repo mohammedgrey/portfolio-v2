@@ -26,7 +26,11 @@ const ExportPdfButton: FC<ExportPdfButtonProps> = ({ config }) => {
   const configKey = useMemo(() => JSON.stringify(config), [config]);
 
   return (
-    <PDFDownloadLink key={configKey} document={document} fileName="resume.pdf">
+    <PDFDownloadLink
+      key={configKey}
+      document={document}
+      fileName="Resume — Mohammed Dawood.pdf"
+    >
       {({ loading }) => (
         <Button className="w-full" disabled={loading}>
           {t("generate.action")}
