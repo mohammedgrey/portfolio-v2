@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Mohammed Dawood",
   firstName: "Mohammed",
   lastName: "Dawood",
-  title: "Senior Software Engineer | React Expert",
+  title: "Senior Software Engineer | Frontend & React Specialist",
   email: "mohammedddawoodd@gmail.com",
   phone: "+966 53 620 9769",
   location: {

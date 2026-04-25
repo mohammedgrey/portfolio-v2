@@ -12,7 +12,7 @@ const useExperience = () => {
       startDate: new Date(2025, 2), // March 2025
       endDate: null, // Present
       description:
-        "Worked on multiple Saudi healthcare projects including MOH initiatives, Sehaty, and Seha platforms, using React, Next.js, TypeScript, SQL, and .NET.\n\nLed a squad responsible for multiple related projects, coordinating delivery, removing blockers, and aligning execution across team members.\n\nIntroduced lightweight tracking and documentation to improve visibility, collaboration, and streamline onboarding and handovers.\n\nConducted interviews for senior frontend roles and helped evaluate candidates for technical and team fit.",
+        "Worked on national-scale Saudi healthcare platforms including Sehaty and Seha, two of the most widely used MOH initiatives in the country, using React, Next.js, TypeScript, SQL, and .NET.\n\nLed a squad of 3-5 engineers across multiple related projects, coordinating delivery, removing blockers, and aligning execution across team members.\n\nBuilt an internal role-based login tool for Seha that reduced manual testing setup time by 70%, with the improvement benefiting both the development and QA teams.\n\nIncorporated AI-assisted development workflows using Cursor, Claude Code, GitHub Copilot, and Codex to accelerate delivery and improve code quality.\n\nIntroduced lightweight tracking and documentation that improved team visibility and cut documentation-based onboarding time from roughly a day to under an hour.\n\nConducted interviews for senior frontend roles and helped evaluate candidates for technical and team fit.",
       technologies: [
         { label: "React", value: TechEnum.React },
         { label: "Next.js", value: TechEnum.NextJS },
@@ -30,7 +30,7 @@ const useExperience = () => {
       startDate: new Date(2024, 2), // March 2024
       endDate: new Date(2025, 1), // February 2025
       description:
-        "Built and maintained the Masroof school platform using React Native for mobile applications and React for the admin dashboard.\n\nWorked in an Agile environment with iterative planning and delivery.\n\nPerformed code reviews to maintain code quality, consistency, and engineering standards.",
+        "Built and maintained Masroof, a Ministry of Education-backed school management platform serving 250,000+ students and 1,350+ schools across Saudi Arabia, with a React Native mobile app and a React admin dashboard.\n\nPerformed code reviews to uphold code quality, consistency, and engineering standards across the codebase.\n\nWorked in an Agile environment with iterative planning and delivery cycles.",
       technologies: [
         { label: "React", value: TechEnum.React },
         { label: "React Native", value: TechEnum.ReactNative },
@@ -42,11 +42,11 @@ const useExperience = () => {
       company: "Ogoul Technology",
       position: "Software Engineer",
       location: "Doha, Qatar",
-      workType: WorkTypeEnum.Remote,
+      workType: WorkTypeEnum.RemoteContract,
       startDate: new Date(2023, 9), // October 2023
       endDate: new Date(2024, 1), // February 2024
       description:
-        "Developed the KalamTime chat application with React Native, focusing on reliable messaging flows and mobile performance.",
+        "Developed the KalamTime chat application with React Native, focusing on reliable messaging flows and mobile performance.\n\nImplemented real-time messaging using WebSockets and integrated native device modules for location access, camera, and contacts syncing.",
       technologies: [
         { label: "MongoDB", value: TechEnum.MongoDB },
         { label: "Express", value: TechEnum.Express },
@@ -64,7 +64,7 @@ const useExperience = () => {
       startDate: new Date(2022, 9), // October 2022
       endDate: new Date(2023, 9), // October 2023
       description:
-        "Worked on multiple products including a hotel booking platform, ERP system, virtual office web app, and Corners food delivery app, using React, React Native, Next.js, Node.js, MongoDB, and TypeScript.\n\nConducted interviews for frontend roles and contributed to hiring decisions.",
+        "Shipped features across four distinct products spanning hotel booking, ERP, virtual office, and food delivery, demonstrating versatility across product domains using React, React Native, Next.js, Node.js, MongoDB, and TypeScript.\n\nContributed to frontend hiring decisions through candidate interviews and technical evaluations.",
       technologies: [
         { label: "React Native", value: TechEnum.ReactNative },
         { label: "Next.js", value: TechEnum.NextJS },
@@ -82,7 +82,7 @@ const useExperience = () => {
       startDate: new Date(2021, 6), // July 2021
       endDate: new Date(2022, 8), // September 2022
       description:
-        "Contributed to EPX (international shipping web app), Gebhaly (e-commerce web app), and the Gebhaly Chrome extension using React and Next.js.",
+        "Contributed to EPX (international shipping web app), Gebhaly (e-commerce web app), and the Gebhaly Chrome extension using React and Next.js.\n\nTook full ownership of EPX and the Chrome extension, leading feature development on both products end to end.",
       technologies: [
         { label: "React", value: TechEnum.React },
         { label: "Next.js", value: TechEnum.NextJS },

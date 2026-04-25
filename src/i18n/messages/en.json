@@ -51,7 +51,7 @@
         "description": "Docker has been essential for keeping development and deployment environments consistent across teams and projects.\n- Standardize local and CI environments to reduce machine-specific issues.\n- Use Docker Compose for multi-service setups across app, database, and supporting tools.\n- Create lean images and predictable runtime configurations for deployments.\n- Improve onboarding by providing consistent development containers and scripts.\n- Reproduce production-like behavior early to reduce release surprises.\n- Streamline team collaboration with shared container-based workflows."
       },
       "ai": {
-        "description": "I use AI as a force multiplier to accelerate delivery while preserving quality and engineering standards.\n- Use AI to boost development speed without compromising quality, architecture, or review standards.\n- Create practical prompt and instruction file patterns for repeatable engineering output.\n- Build reusable skills/workflows used across multiple projects for maintainability.\n- Integrate AI features with evaluation-driven checks before shipping to production.\n- Apply AI assistance for refactoring, test drafting, and documentation while keeping human validation in control.\n- Treat AI outputs as a productivity layer, not a substitute for engineering judgment."
+        "description": "I use AI as a force multiplier to accelerate delivery while preserving quality and engineering standards.\n- Use AI to boost development speed without compromising quality, architecture, or review standards.\n- Create practical prompt and instruction file patterns for repeatable engineering output.\n- Build reusable skills/workflows used across multiple projects for maintainability.\n- Integrate AI features with evaluation-driven checks before shipping to production.\n- Apply AI assistance for refactoring, test drafting, and documentation while keeping human validation in control.\n- Treat AI outputs as a productivity layer, not a substitute for engineering judgment.\n- Actively use multiple AI tools including GitHub Copilot, Cursor, Claude Code, and Codex across different stages of development."
       },
       "flutter": {
         "description": "Flutter has been part of my stack for projects that needed fast, consistent cross-platform mobile delivery.\n- Build cross-platform mobile apps for iOS and Android from a shared codebase.\n- Structure apps with maintainable state and feature modules for long-term growth.\n- Integrate APIs, form flows, and platform capabilities with production-ready practices.\n- Optimize UI responsiveness and release workflows for stable mobile delivery.\n- Build reusable UI primitives to keep product behavior consistent across screens.\n- Maintain clean architecture boundaries for easier testing and long-term maintainability."
@@ -114,13 +114,13 @@
     "dark": "Dark"
   },
   "Metadata": {
-    "title": "Mohammed Dawood | Senior Software Engineer & React Expert",
+    "title": "Mohammed Dawood | Senior Software Engineer | Frontend & React Specialist",
     "description": "Senior Software Engineer specializing in React, Next.js, and TypeScript, with strong product design awareness and practical AI-powered delivery workflows.",
     "keywords": "Mohammed Dawood, Senior Software Engineer, React Developer, Next.js Portfolio, TypeScript, Full-Stack Developer, Frontend Engineer, Product Engineering, AI Integration"
   },
   "HeaderText": {
     "name": "Mohammed Dawood",
-    "title": "Senior Software Engineer | React Expert"
+    "title": "Senior Software Engineer | Frontend & React Specialist"
   },
   "Chat": {
     "errors": {

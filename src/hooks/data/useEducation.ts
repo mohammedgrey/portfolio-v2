@@ -8,15 +8,7 @@ const useEducation = () => {
       institution: "Cairo University",
       location: "Cairo",
       graduationDate: new Date(2022, 6), // July 2022
-      gpa: "3.85/4.00",
-    },
-    {
-      id: "high-school",
-      degree: "High School",
-      institution: "Ibn El-Nafees Language School",
-      location: "Cairo",
-      graduationDate: new Date(2017, 5), // June 2017
-      score: "98/100",
+      gpa: "3.85/4.00, Excellent with Honors",
     },
   ];
 

@@ -19,16 +19,10 @@ const useInterests = () => {
       category: "Autonomous Car",
     },
     {
-      id: "hobbies",
-      title: "Calisthenics & Yoga",
-      description: "Physical fitness and mindfulness activities",
-      category: "Sports",
-    },
-    {
       id: "coding-design",
-      title: "Coding & Design",
+      title: "UI/UX & Interface Design",
       description:
-        "Designing clean, high-clarity interfaces and building robust implementations with practical AI-assisted workflows",
+        "Designing clean, high-clarity interfaces with a strong focus on user experience, from layout and visual hierarchy to production-ready implementation",
       category: "Creative",
     },
   ];

@@ -42,7 +42,7 @@ export enum TechEnum {
   JavaScript = "Javascript",
   NodeJS = "Node.js",
   Docker = "Docker",
-  AI = "AI",
+  AI = "AI Tools",
   Flutter = "Flutter",
   Vue = "Vue.js",
   Nuxt = "Nuxt.js",
@@ -74,6 +74,7 @@ export enum WorkTypeEnum {
   Remote = "remote",
   OnSite = "on-site",
   Hybrid = "hybrid",
+  RemoteContract = "remote, contract",
 }
 
 export enum GeminiApiErrorCode {
