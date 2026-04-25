@@ -56,7 +56,7 @@ export async function generateMetadata({
     .map((keyword) => keyword.trim())
     .filter(Boolean);
   const previewImageUrl = new URL(
-    "/assets/images/profile.jpg",
+    "/assets/images/og-preview.jpg?v=1",
     baseUrl,
   ).toString();
 
@@ -86,6 +86,7 @@ export async function generateMetadata({
           url: previewImageUrl,
           width: 1200,
           height: 630,
+          type: "image/jpeg",
           alt: t("title"),
         },
       ],
