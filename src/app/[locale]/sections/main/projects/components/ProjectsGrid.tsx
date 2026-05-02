@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useProjectsFilter } from "@/hooks/logic/useProjectsFilter";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { ProjectType } from "@/types/common";
 import { SearchX } from "lucide-react";
@@ -114,7 +115,18 @@ const ProjectsGrid: FC<ProjectsGridProps> = ({
       )}
       {!hasNoProjects && hasMoreProjects && (
         <div className="flex justify-center mt-8">
-          <Button variant="outline" onClick={() => setShowAll((prev) => !prev)}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              setShowAll((prev) => {
+                trackEvent(AnalyticsEvent.ProjectsShowMoreClick, {
+                  direction: prev ? "less" : "more",
+                  totalProjects: filteredProjects.length,
+                });
+                return !prev;
+              });
+            }}
+          >
             {showAll ? t("projects.showLess") : t("projects.showMore")}
           </Button>
         </div>

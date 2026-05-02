@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { WhenHydrated } from "@/components/wrappers/WhenHydrated";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 
 export function ThemeSwitcher() {
   const { setTheme, theme } = useTheme();
@@ -59,7 +60,14 @@ export function ThemeSwitcher() {
             return (
               <DropdownMenuItem
                 key={themeOption.value}
-                onClick={() => setTheme(themeOption.value)}
+                onClick={() => {
+                  if (isSelected) return;
+                  setTheme(themeOption.value);
+                  trackEvent(AnalyticsEvent.ThemeSwitch, {
+                    from: theme ?? "unknown",
+                    to: themeOption.value,
+                  });
+                }}
                 selected={isSelected}
               >
                 <Icon className="me-2 h-4 w-4" />

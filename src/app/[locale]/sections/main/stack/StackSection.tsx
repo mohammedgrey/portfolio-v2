@@ -3,6 +3,7 @@
 import AppSection from "@/components/common/AppSection";
 import useStackItems from "@/hooks/data/useStackItems";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { StackItem } from "@/types/common";
 import { Center } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -35,7 +36,12 @@ const StackSection: FC = () => {
             return (
               <motion.button
                 key={item.id}
-                onClick={() => setSelectedItem(item)}
+                onClick={() => {
+                  setSelectedItem(item);
+                  trackEvent(AnalyticsEvent.StackItemClick, {
+                    tech: item.title,
+                  });
+                }}
                 whileTap={{ scale: 0.995 }}
                 className="group relative isolate cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card transition-colors duration-200 focus-visible:outline-none"
               >

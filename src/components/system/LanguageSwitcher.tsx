@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { Check, ChevronDown, Globe, Loader2 } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
@@ -42,6 +43,10 @@ export function LanguageSwitcher() {
     if (locale === currentLocale || isPending) return;
 
     setOptimisticLocale(locale);
+    trackEvent(AnalyticsEvent.LanguageSwitch, {
+      from: currentLocale,
+      to: locale,
+    });
 
     startTransition(() => {
       router.replace(pathname, { locale });

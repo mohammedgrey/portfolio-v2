@@ -12,6 +12,10 @@ export enum AnalyticsEvent {
   ProjectFilterChange = "project_filter_change",
   ProjectExternalLinkClick = "project_external_link_click",
   ContactCopyClick = "contact_copy_click",
+  LanguageSwitch = "language_switch",
+  ThemeSwitch = "theme_switch",
+  StackItemClick = "stack_item_click",
+  ProjectsShowMoreClick = "projects_show_more_click",
 }
 
 type EventParams = Record<string, string | number | boolean | undefined>;
