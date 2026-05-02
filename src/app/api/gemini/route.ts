@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { buildPrompt } from "./promptBuilder";
 import { checkRateLimit, getUserIdentifier } from "./rateLimit";
+import { logChatToTelegram } from "./telegramLogger";
 import { GeminiApiErrorCode, RequestBody } from "./types";
 
 export async function POST(request: Request) {
@@ -123,6 +124,8 @@ export async function POST(request: Request) {
         },
       );
     }
+
+    logChatToTelegram(question, text);
 
     return new Response(
       JSON.stringify({
