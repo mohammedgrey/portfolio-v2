@@ -6,6 +6,12 @@ export enum AnalyticsEvent {
   ResumePdfGenerate = "resume_pdf_generate",
   ResumeConfigChange = "resume_config_change",
   ProjectOpen = "project_open",
+  AiChatOpen = "ai_chat_open",
+  AiChatMessageSent = "ai_chat_message_sent",
+  AiChatError = "ai_chat_error",
+  ProjectFilterChange = "project_filter_change",
+  ProjectExternalLinkClick = "project_external_link_click",
+  ContactCopyClick = "contact_copy_click",
 }
 
 type EventParams = Record<string, string | number | boolean | undefined>;

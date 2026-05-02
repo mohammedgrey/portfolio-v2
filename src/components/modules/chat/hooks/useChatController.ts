@@ -1,6 +1,7 @@
 import { GeminiApiError } from "@/app/api/gemini/types";
 import type { ChatInputProps } from "@/components/modules/chat/components/ChatInput";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import {
   addMessage as addMessageAction,
   removeLastErrorMessage as removeLastErrorMessageAction,
@@ -57,6 +58,10 @@ const useChatController = () => {
       content: msg,
     };
     addMessage(newUserMessage);
+    trackEvent(AnalyticsEvent.AiChatMessageSent, {
+      messageIndex: messages.filter((m) => m.role === "user").length + 1,
+      messageLength: msg.length,
+    });
     sendMessage(msg?.trim() || "");
   };
 
@@ -90,6 +95,10 @@ const useChatController = () => {
       if (apiError) {
         handleRateLimitError(apiError.errorCode, apiError.resetTime);
       }
+
+      trackEvent(AnalyticsEvent.AiChatError, {
+        errorCode: apiError?.errorCode ?? "unknown",
+      });
 
       addMessage({
         id: `error-${(Date.now() + 1).toString()}`,

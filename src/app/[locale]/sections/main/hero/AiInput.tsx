@@ -6,6 +6,7 @@ import { ChatInterface } from "@/components/modules/chat/components/ChatInterfac
 import { Input } from "@/components/ui/input";
 import { WhenHydrated } from "@/components/wrappers/WhenHydrated";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { AnimatePresence, motion } from "framer-motion";
 import { type FC, useEffect, useRef, useState } from "react";
 import { CookiesProvider } from "react-cookie";
@@ -13,11 +14,15 @@ import { CookiesProvider } from "react-cookie";
 const AiInput: FC = () => {
   const [focused, setFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const handleFocus = () => setFocused(true);
+  const openChat = (source: "input_focus" | "external_event") => {
+    setFocused(true);
+    trackEvent(AnalyticsEvent.AiChatOpen, { source });
+  };
+  const handleFocus = () => openChat("input_focus");
   const t = useAppTranslations("HomePage");
 
   useEffect(() => {
-    const handleOpenAiAssistant = () => setFocused(true);
+    const handleOpenAiAssistant = () => openChat("external_event");
 
     window.addEventListener("open-ai-assistant", handleOpenAiAssistant);
 

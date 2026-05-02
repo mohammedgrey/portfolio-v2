@@ -4,6 +4,7 @@ import { ExternalLink, FileText, Github, Smartphone } from "lucide-react";
 import { FC } from "react";
 
 import useDomainIcons from "@/hooks/logic/useDomainIcons";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { ProjectType } from "@/types/common";
 import { ProjectTypeEnum } from "@/types/enums";
 import { TechChip, TypeBadge, YearChip } from "./ProjectBadges";
@@ -16,6 +17,15 @@ interface ProjectDetailsOverlayProps {
 const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
   const { title, details, year, type, link } = project;
   const domainIcons = useDomainIcons();
+
+  const openExternal = (linkType: string, url: string | undefined) => {
+    if (!url) return;
+    trackEvent(AnalyticsEvent.ProjectExternalLinkClick, {
+      projectTitle: title,
+      linkType,
+    });
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   const briefLines = details?.brief
     ? details.brief
         .split("\n")
@@ -49,9 +59,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                 <Button
                   size="sm"
                   className="shrink-0 gap-2"
-                  onClick={() =>
-                    window.open(link, "_blank", "noopener,noreferrer")
-                  }
+                  onClick={() => openExternal("project_site", link)}
                 >
                   <ExternalLink className="w-4 h-4" />
                   Visit Project
@@ -104,9 +112,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     variant="outline"
                     size="sm"
                     className="justify-start gap-2"
-                    onClick={() =>
-                      window.open(details.PDF, "_blank", "noopener,noreferrer")
-                    }
+                    onClick={() => openExternal("pdf", details.PDF)}
                   >
                     <FileText className="w-4 h-4" />
                     PDF
@@ -117,13 +123,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     variant="outline"
                     size="sm"
                     className="justify-start gap-2"
-                    onClick={() =>
-                      window.open(
-                        details.client,
-                        "_blank",
-                        "noopener,noreferrer",
-                      )
-                    }
+                    onClick={() => openExternal("client", details.client)}
                   >
                     <ExternalLink className="w-4 h-4" />
                     Client
@@ -134,13 +134,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     variant="outline"
                     size="sm"
                     className="justify-start gap-2"
-                    onClick={() =>
-                      window.open(
-                        details.android,
-                        "_blank",
-                        "noopener,noreferrer",
-                      )
-                    }
+                    onClick={() => openExternal("android", details.android)}
                   >
                     <Smartphone className="w-4 h-4" />
                     Android
@@ -151,9 +145,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     variant="outline"
                     size="sm"
                     className="justify-start gap-2"
-                    onClick={() =>
-                      window.open(details.ios, "_blank", "noopener,noreferrer")
-                    }
+                    onClick={() => openExternal("ios", details.ios)}
                   >
                     <Smartphone className="w-4 h-4" />
                     iOS
@@ -165,11 +157,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     size="sm"
                     className="justify-start gap-2"
                     onClick={() =>
-                      window.open(
-                        details.extension,
-                        "_blank",
-                        "noopener,noreferrer",
-                      )
+                      openExternal("extension", details.extension)
                     }
                   >
                     <ExternalLink className="w-4 h-4" />
@@ -181,9 +169,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                     variant="outline"
                     size="sm"
                     className="justify-start gap-2"
-                    onClick={() =>
-                      window.open(details.API, "_blank", "noopener,noreferrer")
-                    }
+                    onClick={() => openExternal("api", details.API)}
                   >
                     <ExternalLink className="w-4 h-4" />
                     API
@@ -197,9 +183,7 @@ const ProjectDetailsOverlay: FC<ProjectDetailsOverlayProps> = ({ project }) => {
                         variant="outline"
                         size="sm"
                         className="justify-start gap-2"
-                        onClick={() =>
-                          window.open(url, "_blank", "noopener,noreferrer")
-                        }
+                        onClick={() => openExternal(`git_${key}`, url)}
                       >
                         <Github className="w-4 h-4" />
                         {key === "both" ? "Git" : `Git (${key})`}

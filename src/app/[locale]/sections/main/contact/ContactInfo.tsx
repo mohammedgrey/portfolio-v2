@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/personalInfo";
 import { socials } from "@/data/socials";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { ArrowUpRight, Check, Copy, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { type FC, useState } from "react";
@@ -27,6 +28,7 @@ const ContactItem: FC<ContactItemProps> = ({ icon, label, value, link }) => {
     await navigator.clipboard.writeText(value);
     setCopied(true);
     toast.success(t("copiedToClipboard"));
+    trackEvent(AnalyticsEvent.ContactCopyClick, { field: label });
     setTimeout(() => setCopied(false), 2000);
   };
 
