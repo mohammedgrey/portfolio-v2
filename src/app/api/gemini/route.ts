@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { after } from "next/server";
 import { buildPrompt } from "./promptBuilder";
 import { checkRateLimit, getUserIdentifier } from "./rateLimit";
 import { logChatToTelegram } from "./telegramLogger";
@@ -125,7 +126,7 @@ export async function POST(request: Request) {
       );
     }
 
-    logChatToTelegram(question, text);
+    after(() => logChatToTelegram(question, text));
 
     return new Response(
       JSON.stringify({
