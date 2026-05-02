@@ -3,6 +3,7 @@
 import { FullscreenOverlay } from "@/components/common/FullScreenOverlay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import useDomainIcons from "@/hooks/logic/useDomainIcons";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { ProjectType } from "@/types/common";
 import { ProjectTypeEnum } from "@/types/enums";
@@ -26,7 +27,14 @@ const ProjectCard: FC<ProjectCardProps> = ({ project, className }) => {
     .find((line) => line && !line.startsWith("- "));
   const [overlayOpen, setOverlayOpen] = useState(false);
   const closeOverlay = () => setOverlayOpen(false);
-  const openOverlay = () => setOverlayOpen(true);
+  const openOverlay = () => {
+    setOverlayOpen(true);
+    trackEvent(AnalyticsEvent.ProjectOpen, {
+      projectTitle: title,
+      projectType: type.value,
+      projectYear: year,
+    });
+  };
 
   return (
     <>

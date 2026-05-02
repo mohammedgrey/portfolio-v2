@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { personalInfo } from "@/data/personalInfo";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Send } from "lucide-react";
@@ -99,11 +100,15 @@ const ContactForm: FC = () => {
       );
 
       toast.success(t("form.success"));
+      trackEvent(AnalyticsEvent.ContactFormSubmitSuccess);
       reset();
       recaptchaRef.current?.reset();
     } catch (error) {
       console.error("Contact form submission failed", error);
       toast.error(t("form.error"));
+      trackEvent(AnalyticsEvent.ContactFormSubmitError, {
+        reason: error instanceof Error ? error.message : "unknown",
+      });
     } finally {
       setIsSubmitting(false);
     }

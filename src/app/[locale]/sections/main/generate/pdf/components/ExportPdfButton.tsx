@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { type FC, useMemo } from "react";
 import { CookiesProvider } from "react-cookie";
@@ -30,6 +31,14 @@ const ExportPdfButton: FC<ExportPdfButtonProps> = ({ config }) => {
       key={configKey}
       document={document}
       fileName="Resume • Mohammed Dawood.pdf"
+      onClick={() =>
+        trackEvent(AnalyticsEvent.ResumePdfGenerate, {
+          showSkills: config?.showSkills,
+          showExperience: config?.showExperience,
+          showEducation: config?.showEducation,
+          showInterests: config?.showInterests,
+        })
+      }
     >
       {({ loading }) => (
         <Button className="w-full" disabled={loading}>

@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useAppTranslations } from "@/i18n";
+import { AnalyticsEvent, trackEvent } from "@/lib/analytics";
 import { type FC, useState } from "react";
 
 interface ResumeConfigProps {
@@ -31,6 +32,10 @@ const ResumeConfig: FC<ResumeConfigProps> = ({ onConfigChange }) => {
     const newConfig = { ...config, [key]: !config[key] };
     setConfig(newConfig);
     onConfigChange?.(newConfig);
+    trackEvent(AnalyticsEvent.ResumeConfigChange, {
+      section: key,
+      enabled: newConfig[key],
+    });
   };
 
   return (
