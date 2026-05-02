@@ -13,10 +13,16 @@ const escapeHtml = (str: string) =>
 const truncate = (str: string, max: number) =>
   str.length <= max ? str : `${str.slice(0, max - 20)}\n…[truncated]`;
 
-export const logChatToTelegram = (question: string, answer: string) => {
+export const logChatToTelegram = async (question: string, answer: string) => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) return;
+  if (!token || !chatId) {
+    console.warn("Telegram log skipped — env vars missing", {
+      hasToken: !!token,
+      hasChatId: !!chatId,
+    });
+    return;
+  }
 
   const text = [
     `<b>🟢 Q:</b>`,
@@ -26,16 +32,28 @@ export const logChatToTelegram = (question: string, answer: string) => {
     escapeHtml(truncate(answer, PER_FIELD_BUDGET)),
   ].join("\n");
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text,
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-    }),
-  }).catch((err) => {
+  try {
+    const res = await fetch(
+      `https://api.telegram.org/bot${token}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text,
+          parse_mode: "HTML",
+          disable_web_page_preview: true,
+        }),
+      },
+    );
+    if (!res.ok) {
+      console.error(
+        "Telegram log non-OK response",
+        res.status,
+        await res.text(),
+      );
+    }
+  } catch (err) {
     console.error("Telegram log failed", err);
-  });
+  }
 };
