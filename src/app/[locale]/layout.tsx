@@ -9,6 +9,7 @@ import StoreProvider from "@/components/wrappers/StoreProvider";
 import { ThemeProvider } from "@/components/wrappers/ThemeProvider";
 import { getAppTranslations } from "@/i18n";
 import { routing } from "@/i18n/routing";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/react";
@@ -108,6 +109,7 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
+  const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_CODE;
 
   return (
     <html
@@ -116,6 +118,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body className={`${font.variable} antialiased`}>
+        {gaId && <GoogleAnalytics gaId={gaId} />}
         <PageBackground />
         <LocaleProvider locale={locale}>
           <ThemeProvider
